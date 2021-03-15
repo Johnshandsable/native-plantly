@@ -27,10 +27,10 @@ function PlantItem({ plant }) {
     <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
       <Card>
         <CardActionArea>
-          {plant.image_url ? (
+          {plant.image.image_url ? (
             <img
               className="card-image"
-              src={plant.image_url}
+              src={plant.image.image_url}
               alt={plant.primaryCommonName}
             />
           ) : (

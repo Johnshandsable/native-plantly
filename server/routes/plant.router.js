@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
     ); // end of POST request
     // console.log(listOfPlants.data.results);
     const bundledData = await bundleData(listOfPlants.data.results);
-    // console.log(bundledData);
+    console.log(bundledData);
     // console.table(bundledData.image.id);
     res.send(bundledData);
   } catch (err) {

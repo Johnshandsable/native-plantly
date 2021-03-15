@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 
 function PlantList() {
   const dispatch = useDispatch();
-  const plantList = useSelector((store) => store.plants);
+  const plantList = useSelector((store) => store.plants.plantReducer);
 
   useEffect(() => {
     getPlants();

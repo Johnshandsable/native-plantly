@@ -110,3 +110,23 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.picture-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.picture {
+  border-radius: 5px;
+  max-width: 400px;
+}
+
+ul {
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+}
+
+.card-image {
+  max-height: 250px;
+  width: 100%;
+}

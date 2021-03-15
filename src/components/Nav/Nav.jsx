@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 // MATERIAL UI
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -111,27 +112,27 @@ function Nav() {
             <MenuItem component={Link} to="/my-list" onClick={handleClose}>
               My List
             </MenuItem>
+            <MenuItem component={Link} to={loginLinkData.path}>
+              {loginLinkData.text}
+            </MenuItem>
+
+            {user.id && (
+              <MenuItem component={Link} to="/info">
+                Info Page
+              </MenuItem>
+              /* <MenuItem
+                  component={Button}
+                  onClick={() => dispatch({ type: 'LOGOUT' })}
+                >
+                  Logout
+                </MenuItem> */
+
+              /* <LogOutButton className="navLink" /> */
+            )}
           </Menu>
         </Toolbar>
       </AppBar>
     </div>
-    // <div className="nav">
-    //   <Link to="/home">
-    //     <h2 className="nav-title">Prime Solo Project</h2>
-    //   </Link>
-    //   <div>
-    //     <Link className="navLink" to={loginLinkData.path}>
-    //       {loginLinkData.text}
-    //     </Link>
-
-    //     {user.id && (
-    //       <>
-    //         <Link className="navLink" to="/info">
-    //           Info Page
-    //         </Link>
-    //         <LogOutButton className="navLink" />
-    //       </>
-    //     )}
 
     //     <Link className="navLink" to="/about">
     //       About
