@@ -9,3 +9,8 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "location" VARCHAT(80) NOT NULL
 );
+
+CREATE TABLE "plants" (
+  "id" SERIAL PRIMARY KEY, 
+  "user_id" REFERENCES "user"
+)

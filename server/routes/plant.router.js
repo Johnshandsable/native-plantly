@@ -54,14 +54,37 @@ router.get('/', async (req, res) => {
         ],
       } // above info sent to NatureServe API
     ); // end of POST request
-    console.log(listOfPlants.data.results);
+    // console.log(listOfPlants.data.results);
     const bundledData = await bundleData(listOfPlants.data.results);
-    console.log(bundledData);
+    // console.log(bundledData);
+    // console.table(bundledData.image.id);
     res.send(bundledData);
   } catch (err) {
     console.error('an error occurred getting info from NatureServe', err);
     res.sendStatus(500);
   }
 });
+
+/*
+router.get('/plants', async (req, res) => {
+  let plantsRes = await pool.query(`
+    SELECT FROM user_plants
+    WHERE user_id=$1
+  `, [req.user.id]);
+  /**
+   * [
+   *    {
+   *      id: 7,
+   *      treffle_id: 'akjsdfh987234kjasdf',
+   *      natureserver_id: '0918324jnx'
+   *    }
+   * ]
+   */
+//  let allTheData = await Promise.all(plantsRes.rows.map(async plant => {
+//   let treffleRes = await axios.get(`treffle.com/whatever/${plant.treffle_id}`);
+//   let natureServerRes = await axios.get(`natureserver.com/whatever/${plant.natureserver_id}`);
+//   return {
+//     treffleData: treffleRes.data,
+//     natureServerDat: natureServerRes.data
 
 module.exports = router;

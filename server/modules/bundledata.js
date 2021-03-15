@@ -33,9 +33,10 @@ async function bundleData(dataResults) {
       bundles data in appropriate format to send back to client-side
     */
     clientData.push({
+      natureServeid: resultItem.elementGlobalId,
       scientificName: resultItem.scientificName,
       primaryCommonName: resultItem.primaryCommonName,
-      image_url: await getImageURL(resultItem.scientificName),
+      image: await getImageData(resultItem.scientificName),
       kingdom: resultItem.speciesGlobal.kingdom,
       phylum: resultItem.speciesGlobal.phylum,
       class: resultItem.speciesGlobal.taxclass,
@@ -47,22 +48,25 @@ async function bundleData(dataResults) {
   return clientData;
 }
 
-async function getImageURL(scientificName) {
-  let imageURL = '';
+async function getImageData(scientificName) {
+  // let imageURL = '';
   const imageData = await axios.get('https://trefle.io/api/v1/species/search', {
     params: {
       q: `${scientificName}`,
       token: process.env.TREFLE_API_KEY,
     },
   });
-  for (index = 0; index < imageData.data.data.length; index++) {
-    if (imageData.data.data[index].image_url === null) {
-      continue;
-    } else {
-      imageURL = imageData.data.data[index].image_url; // OK
-    }
-  }
-  return imageURL;
+  // console.log('TREFLE', imageData.data.data);
+  // for (index = 0; index < imageData.data.data.length; index++) {
+  //   if (imageData.data.data[index].image_url === null) {
+  //     continue;
+  //   } else {
+  //     imageURL = imageData.data.data[index].image_url; // OK
+  //   }
+  // }
+  // return imageURL;
+  // console.log(typeof imageData.data.data);
+  return imageData.data.data[0];
 }
 
 module.exports = bundleData;
