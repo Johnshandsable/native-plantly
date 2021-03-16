@@ -11,7 +11,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // Custom Components
 import AboutPage from '../AboutPage/AboutPage';
 import Footer from '../Footer/Footer';
-// import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import Nav from '../Nav/Nav';
@@ -64,7 +63,7 @@ function App() {
             </Route>
 
             {/* My List Route */}
-            <Route path="/my-list"></Route>
+            <Route path="/my-gardens"></Route>
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
