@@ -1,5 +1,5 @@
 // MATERIAL UI
-// import SearchIcon from '@material-ui/icons/Search'; -- optional
+import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -23,36 +23,40 @@ function SearchBar() {
         maxWidth: 200,
       },
     },
-    // searchIcon: {
-    //   padding: theme.spacing(0, 2),
-    //   height: '100%',
-    //   position: 'absolute',
-    //   pointerEvents: 'none',
-    //   display: 'flex',
-    //   alignItems: 'left',
-    //   justifyContent: 'left',
-    // },
+    searchIcon: {
+      padding: theme.spacing(0, 2),
+      height: '90%',
+      display: 'inline-block',
+      position: 'absolute',
+    },
   }));
-
   const classes = useStyles();
 
+  // Event handlers
+  const handleSearch = (evt) => {
+    console.log(evt);
+    console.log('search is happening');
+  };
+
   return (
-    <div className={classes.search}>
-      {/* <div className={classes.searchIcon}>
-        <SearchIcon />
-      </div> */}
-      <Grid>
-        <Grid item xs={12}>
-          <InputBase
-            placeholder="search by species..."
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
+    <div>
+      <div className={classes.search}>
+        <Grid>
+          <Grid item xs={12}>
+            <InputBase
+              placeholder="search by species..."
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+            <div className={classes.searchIcon}>
+              <SearchIcon onClick={handleSearch} />
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </div>
   );
 }

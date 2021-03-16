@@ -11,7 +11,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // Custom Components
 import AboutPage from '../AboutPage/AboutPage';
 import Footer from '../Footer/Footer';
-import InfoPage from '../InfoPage/InfoPage';
+// import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import Nav from '../Nav/Nav';
@@ -78,13 +78,13 @@ function App() {
               <UserPage />
             </ProtectedRoute>
 
-            <ProtectedRoute
+            {/* <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
               path="/info"
             >
               <InfoPage />
-            </ProtectedRoute>
+            </ProtectedRoute> */}
 
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
