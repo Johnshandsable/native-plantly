@@ -55,6 +55,7 @@ function App() {
             {/* Home Route */}
             <Route path="/home" exact>
               <SearchBar />
+              <PlantList />
             </Route>
 
             {/* About Route */}
@@ -63,9 +64,7 @@ function App() {
             </Route>
 
             {/* My List Route */}
-            <Route path="/my-list">
-              <PlantList />
-            </Route>
+            <Route path="/my-list"></Route>
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.

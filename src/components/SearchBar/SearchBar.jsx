@@ -1,22 +1,25 @@
-import InputBase from '@material-ui/core/InputBase';
-// import SearchIcon from '@material-ui/icons/Search';
+// MATERIAL UI
+// import SearchIcon from '@material-ui/icons/Search'; -- optional
 import { fade, makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import InputBase from '@material-ui/core/InputBase';
 
 function SearchBar() {
   const useStyles = makeStyles((theme) => ({
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.secondary.main, 0.15),
+      backgroundColor: fade(theme.palette.secondary.main, 0.5),
       '&:hover': {
-        backgroundColor: fade(theme.palette.secondary.main, 0.25),
+        backgroundColor: fade(theme.palette.secondary.main, 0.75),
       },
       marginLeft: 0,
       width: '25%',
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('lg')]: {
         paddingLeft: theme.spacing(2),
         marginLeft: theme.spacing(3),
-        marginTop: theme.spacing(5),
+        marginTop: 100,
         maxWidth: 200,
       },
     },
@@ -38,14 +41,18 @@ function SearchBar() {
       {/* <div className={classes.searchIcon}>
         <SearchIcon />
       </div> */}
-      <InputBase
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{ 'aria-label': 'search' }}
-      />
+      <Grid>
+        <Grid item xs={12}>
+          <InputBase
+            placeholder="search by species..."
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 }

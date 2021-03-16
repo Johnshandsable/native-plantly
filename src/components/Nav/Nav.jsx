@@ -98,12 +98,18 @@ function Nav() {
           </IconButton>
 
           <Menu
+            className={classes.inputRoot}
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem component={Link} to="/home" onClick={handleClose}>
+            <MenuItem
+              className={classes.inputRoot}
+              component={Link}
+              to="/home"
+              onClick={handleClose}
+            >
               Home
             </MenuItem>
             <MenuItem component={Link} to="/about" onClick={handleClose}>
