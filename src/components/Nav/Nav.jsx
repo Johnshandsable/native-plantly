@@ -121,20 +121,19 @@ function Nav() {
             <MenuItem component={Link} to={loginLinkData.path}>
               {loginLinkData.text}
             </MenuItem>
-
-            {user.id && (
+            {/* {user.id && (
               <MenuItem component={Link} to="/info">
                 Info Page
-              </MenuItem>
-              /* <MenuItem
-                  component={Button}
-                  onClick={() => dispatch({ type: 'LOGOUT' })}
-                >
-                  Logout
-                </MenuItem> */
-
-              /* <LogOutButton className="navLink" /> */
-            )}
+              </MenuItem> */}
+            /*{' '}
+            <MenuItem
+              component={Button}
+              onClick={() => dispatch({ type: 'LOGOUT' })}
+            >
+              Logout
+            </MenuItem>{' '}
+            */ /* <LogOutButton className="navLink" /> */
+            {/* )} */}
           </Menu>
         </Toolbar>
       </AppBar>

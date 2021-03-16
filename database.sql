@@ -13,9 +13,18 @@ CREATE TABLE "user" (
     "location" VARCHAR(80) NOT NULL
 );
 
+CREATE TABLE "garden_sections" (
+	"id" SERIAL PRIMARY KEY, 
+	"name" VARCHAR(1000) DEFAULT 'my_list');
+
 CREATE TABLE "plants" (
   "id" SERIAL PRIMARY KEY, 
   "user_id" INT REFERENCES "user",
-  "trefle_id" INT NOT NULL,
-  "natureserve_id" INT NOT NULL
+  "trefle_slug" VARCHAR(1000),
+  "natureserve_id" INT NOT NULL,
+  "section_id" INT REFERENCES "garden_sections"
 );
+
+-- DROP TABLE "plants";
+-- DROP TABLE "user";
+-- DROP TABLE "garden_sections";

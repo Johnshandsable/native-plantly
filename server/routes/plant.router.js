@@ -63,8 +63,25 @@ router.get('/', async (req, res) => {
     console.error('an error occurred getting info from NatureServe', err);
     res.sendStatus(500);
   }
-});
+}); // end of GET by location, species
 
+router.get('/:slug', (req, res) => {
+  const trefleSlug = req.params.slug;
+  axios
+    .get(`http://trefle.io/api/v1/plants/${trefleSlug}`, {
+      params: {
+        token: process.env.TREFLE_API_KEY,
+      },
+    })
+    .then((dbRes) => {
+      console.log(dbRes.data.data);
+      res.send(dbRes.data.data);
+    })
+    .catch((err) => {
+      console.error('GET DETAILS - an error occurred', err);
+      res.sendStatus(500);
+    });
+}); // end of GET details
 /*
 router.get('/plants', async (req, res) => {
   let plantsRes = await pool.query(`
