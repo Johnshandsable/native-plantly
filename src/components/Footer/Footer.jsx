@@ -8,18 +8,18 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <div class="footer-clean">
+    <div className="footer-clean">
       <footer>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-3 item social">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-3 item social">
               {/* <a href="#">
                 <i class="icon ion-social-github"></i>
               </a>
               <a href="#">
                 <i class="icon ion-social-linkedin"></i>
               </a> */}
-              <p class="copyright">John Shands © 2021</p>
+              <p className="copyright">John Shands © 2021</p>
             </div>
           </div>
         </div>

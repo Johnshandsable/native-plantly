@@ -10,6 +10,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 // Custom Components
 import AboutPage from '../AboutPage/AboutPage';
+import DetailView from '../DetailView/DetailView';
 import Footer from '../Footer/Footer';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -62,8 +63,13 @@ function App() {
               <AboutPage />
             </Route>
 
-            {/* My List Route */}
-            <Route path="/my-gardens"></Route>
+            {/* Details View for Single Plants */}
+            <Route path="/details/:slug">
+              <DetailView />
+            </Route>
+
+            {/* My Gardens Route */}
+            <ProtectedRoute path="/my-gardens"></ProtectedRoute>
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.

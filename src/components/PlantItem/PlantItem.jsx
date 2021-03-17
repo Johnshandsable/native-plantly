@@ -8,6 +8,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 function PlantItem({ plant }) {
   /*
       -------Display Order-------
@@ -18,8 +21,18 @@ function PlantItem({ plant }) {
       Family: Liliaceae
       Genus: Pine, Wattles, Milkvetch, Dandelion, etc.
       Species: Common water Hyacinth, Yellow star-thistle, Purple loosestrife, Kudzu, etc.
-    */
-  console.log(process.env.PUBLIC_URL + '/sumac.jpg');
+  */
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleClickGoToDetailView = (evt) => {
+    console.log(evt.target.name);
+    dispatch({
+      type: 'GET_SINGLE_PLANT_DETAIL_VIEW',
+      payload: evt.target.name,
+    });
+    history.push(`/details/`);
+  };
 
   return (
     // Set breakpoints for multiple screen sizes
@@ -27,24 +40,26 @@ function PlantItem({ plant }) {
     <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
       <Card>
         <CardActionArea>
+          {/* <div className="card-header">
+            <Typography>Click Me</Typography>
+          </div> */}
           {plant.image.image_url ? (
             <img
               className="card-image"
+              name={plant.image.slug}
+              onClick={handleClickGoToDetailView}
               src={plant.image.image_url}
               alt={plant.primaryCommonName}
             />
           ) : (
             <img
               className="card-image"
+              name={plant.image.slug}
+              onClick={handleClickGoToDetailView}
               src={process.env.PUBLIC_URL + '/sumac.jpg'}
               alt={plant.primaryCommonName}
             />
           )}
-          {/* <img
-            className="card-image"
-            src={process.env.PUBLIC_URL + '/sumac.jpg'}
-            alt={plant.primaryCommonName}
-          /> */}
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {plant.primaryCommonName}

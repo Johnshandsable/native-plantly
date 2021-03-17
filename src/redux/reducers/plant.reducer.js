@@ -10,6 +10,17 @@ const plantReducer = (state = [], action) => {
   }
 };
 
+const singlePlantReducer = (state = '', action) => {
+  console.log('Reducer - ', action.payload);
+  switch (action.type) {
+    case 'SET_DETAILED_PLANT':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   plantReducer,
+  singlePlantReducer,
 });
