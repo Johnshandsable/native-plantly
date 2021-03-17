@@ -20,7 +20,8 @@ const getPlants = function* (action) {
 
 function* getSinglePlantDetailView(action) {
   try {
-    const response = yield axios.get(`api/plant-details/${action.payload}`);
+    console.log(action.payload);
+    const response = yield axios.get(`/api/plant-details/${action.payload}`);
     yield put({
       type: 'SET_DETAILED_PLANT',
       payload: response.data,
