@@ -4,6 +4,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import InputBase from '@material-ui/core/InputBase';
+import SendIcon from '@material-ui/icons/Send';
 
 function SearchBar() {
   const useStyles = makeStyles((theme) => ({
@@ -19,15 +20,21 @@ function SearchBar() {
       [theme.breakpoints.up('lg')]: {
         paddingLeft: theme.spacing(2),
         marginLeft: theme.spacing(3),
-        marginTop: 100,
+        marginTop: 120,
         maxWidth: 200,
       },
     },
     searchIcon: {
-      padding: theme.spacing(0, 2),
+      padding: theme.spacing(0.5, 21),
       height: '90%',
       display: 'inline-block',
       position: 'absolute',
+    },
+    sendIcon: {
+      display: 'inline-block',
+      marginLeft: 250,
+      top: 0,
+      zIndex: '-1',
     },
   }));
   const classes = useStyles();
@@ -39,10 +46,13 @@ function SearchBar() {
   };
 
   return (
-    <div>
+    <>
       <div className={classes.search}>
         <Grid>
-          <Grid item xs={12}>
+          <Grid item xs={3}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
             <InputBase
               placeholder="search by species..."
               classes={{
@@ -51,13 +61,11 @@ function SearchBar() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <div className={classes.searchIcon}>
-              <SearchIcon onClick={handleSearch} />
-            </div>
           </Grid>
         </Grid>
       </div>
-    </div>
+      <SendIcon className={classes.sendIcon} onClick={handleSearch} />
+    </>
   );
 }
 

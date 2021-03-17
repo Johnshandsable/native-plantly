@@ -1,5 +1,6 @@
 .footer-clean {
   margin-top: calc(5% + 60px);
+  z-index: -1;
   bottom: 0;
   padding: 5px 0;
   max-height: 64px;
