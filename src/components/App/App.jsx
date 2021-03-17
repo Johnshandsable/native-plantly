@@ -64,7 +64,7 @@ function App() {
             </Route>
 
             {/* Details View for Single Plants */}
-            <Route path="/details/:slug">
+            <Route path="/details/">
               <DetailView />
             </Route>
 
