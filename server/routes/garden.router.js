@@ -9,9 +9,10 @@ const {
 router.get('/dropdown', rejectUnauthenticated, (req, res) => {
   // console.log(req.user.id);
   const sqlQuery = `SELECT * FROM "garden_sections" WHERE "user_id" = $1`;
+  const userId = req.user.id;
 
   pool
-    .query(sqlQuery, [req.user.id])
+    .query(sqlQuery, [userId])
     .then((dbRes) => {
       console.log('GET - dropdown res', dbRes);
       res.sendStatus(200);
@@ -22,9 +23,22 @@ router.get('/dropdown', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.post('/dropdown', (req, res) => {
+router.post('/dropdown', rejectUnauthenticated, (req, res) => {
   // console.log(req.user.id);
   const sqlQuery = `INSERT INTO "garden_sections" ("name", "user_id") VALUES ($1, $2);`;
+  const sectionName = req.body.name;
+  const userId = req.user.id;
+
+  pool
+    .query(sqlQuery, [sectionName, userId])
+    .then((dbRes) => {
+      console.log('POST - dropdown', dbRes);
+      res.sendStatus(201); // CREATED
+    })
+    .catch((err) => {
+      console.error('POST - dropdown an error occurred', err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
