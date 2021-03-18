@@ -81,10 +81,7 @@ function PlantItem({ plant }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Add to List
-          </Button>
-          <Dropdown />
+          <Dropdown plant={plant} />
           <CreateNewDropdownButton />
         </CardActions>
       </Card>
