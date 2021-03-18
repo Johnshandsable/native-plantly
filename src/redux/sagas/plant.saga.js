@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 const getPlants = function* (action) {
@@ -33,8 +33,8 @@ function* getSinglePlantDetailView(action) {
 
 function* plantSaga() {
   // listen for this and do function
-  yield takeLatest('GET_PLANTS', getPlants);
-  yield takeLatest('GET_SINGLE_PLANT_DETAIL_VIEW', getSinglePlantDetailView);
+  yield takeEvery('GET_PLANTS', getPlants);
+  yield takeEvery('GET_SINGLE_PLANT_DETAIL_VIEW', getSinglePlantDetailView);
 } // end plantSaga
 
 export default plantSaga;

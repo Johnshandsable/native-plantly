@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 
 // Custom Components
 import Dropdown from '../Dropdown/Dropdown';
+import CreateNewDropdownButton from '../Buttons/CreateNewDropdownButton';
 
 function PlantItem({ plant }) {
   /*
@@ -84,6 +85,7 @@ function PlantItem({ plant }) {
             Add to List
           </Button>
           <Dropdown />
+          <CreateNewDropdownButton />
         </CardActions>
       </Card>
     </Grid>
