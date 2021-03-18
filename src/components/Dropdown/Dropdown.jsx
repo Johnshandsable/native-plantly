@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 function Dropdown() {
   const dispatch = useDispatch();
+  const dropdownList = useSelector((store) => store.garden.gardenReducer);
 
   useEffect(() => {
     getGardenDropdown();
@@ -20,13 +21,15 @@ function Dropdown() {
   };
 
   return (
-    <Select labelId="demo-customized-select-label" id="demo-customized-select">
-      <MenuItem value="">
+    <Select defaultValue="">
+      <MenuItem>
         <em>None</em>
       </MenuItem>
-      {/* {this.props.items.map((item) => (
-        <MenuItem key={item.value} {...item} />
-      ))} */}
+      {dropdownList.map((dropdownItem, i) => (
+        <MenuItem value={dropdownItem.name} key={i}>
+          {dropdownItem.name}
+        </MenuItem>
+      ))}
     </Select>
   );
 }
