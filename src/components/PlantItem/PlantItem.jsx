@@ -1,3 +1,6 @@
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 // MATERIAL UI
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -6,10 +9,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+// Custom Components
+import Dropdown from '../Dropdown/Dropdown';
 
 function PlantItem({ plant }) {
   /*
@@ -78,6 +83,7 @@ function PlantItem({ plant }) {
           <Button size="small" color="primary">
             Add to List
           </Button>
+          <Dropdown />
         </CardActions>
       </Card>
     </Grid>

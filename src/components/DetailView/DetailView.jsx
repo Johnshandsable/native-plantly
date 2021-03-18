@@ -30,72 +30,6 @@ function DetailView() {
   // Setup classes
   const classes = useStyles();
 
-  /*
-  detailedPlant.main_species
-  ----------------------------------------------
-  author: "Hogg ex Sweet"
-  ​​
-  bibliography: "Brit. Fl. Gard. 2: t. 175 (1826)"
-  ​​
-  common_name: "Largeflower tickseed"
-  ​​
-  common_names: Object { en: (8) […], zh: (1) […], fr: (2) […], … }
-  ​​
-  distribution: Object { native: (33) […], introduced: (16) […] }
-  ​​
-  distributions: Object { native: (33) […], introduced: (16) […] }
-  ​​
-  duration: null
-  ​​
-  edible: false
-  ​​
-  edible_part: null
-  ​​
-  family: "Asteraceae"
-  ​​
-  family_common_name: "Aster family"
-  ​​
-  flower: Object { color: null, conspicuous: null }
-  ​​
-  foliage: Object { texture: null, color: null, leaf_retention: null }
-  ​​
-  fruit_or_seed: Object { conspicuous: null, color: null, shape: null, … }
-  ​​
-  genus: "Coreopsis"
-  ​​
-  genus_id: 976
-  ​​
-  growth: Object { description: null, sowing: null, days_to_harvest: null, … }
-  ​​
-  id: 123147
-  ​​
-  image_url: "https://bs.plantnet.org/image/o/46e86ad3b79dc3285ce57809bd7c82a1c5011a9b"
-  ​​
-  images: Object { flower: (2) […], fruit: (1) […], leaf: (2) […], … }
-  ​​
-  links: Object { self: "/api/v1/species/coreopsis-grandiflora", plant: "/api/v1/plants/coreopsis-grandiflora", genus: "/api/v1/genus/coreopsis" }
-  ​​
-  observations: "E. Canada to U.S.A."
-  ​​
-  rank: "species"
-  ​​
-  scientific_name: "Coreopsis grandiflora"
-  ​​
-  slug: "coreopsis-grandiflora"
-  ​​
-  sources: Array(8) [ {…}, {…}, {…}, … ]
-  ​​
-  specifications: Object { ligneous_type: null, growth_form: null, growth_habit: "Forb/herb", … }
-  ​​
-  status: "accepted"
-  ​​
-  synonyms: Array(13) [ {…}, {…}, {…}, … ]
-  ​​
-  vegetable: false
-  ​​
-  year: 1826
-  */
-
   console.log(detailedPlant);
   return (
     <div className={classes.root}>
@@ -196,6 +130,12 @@ function DetailView() {
                 {detailedPlant.main_species.specifications.toxicity
                   ? detailedPlant.main_species.specifications.toxicity
                   : 'unknown'}
+              </Typography>
+
+              <Typography gutterBottom component="p">
+                {/* {detailedPlant.main_species.sources.map((source) => {
+                  return source;
+                })} */}
               </Typography>
             </CardContent>
           </Card>
