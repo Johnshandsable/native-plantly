@@ -1,4 +1,4 @@
-import { put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* getDropdown() {
@@ -27,7 +27,7 @@ function* addDropdown(action) {
 
 function* gardenSaga() {
   // listen for this and do function
-  yield takeLatest('GET_DROPDOWN', getDropdown);
+  yield takeEvery('GET_DROPDOWN', getDropdown);
   yield takeEvery('ADD_DROPDOWN_SECTION', addDropdown);
 } // end plantSaga
 
