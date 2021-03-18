@@ -115,35 +115,23 @@ function Nav() {
             <MenuItem component={Link} to="/about" onClick={handleClose}>
               About
             </MenuItem>
-            <MenuItem component={Link} to="/my-list" onClick={handleClose}>
-              My List
+            <MenuItem component={Link} to="/my-gardens" onClick={handleClose}>
+              My Gardens
             </MenuItem>
             <MenuItem component={Link} to={loginLinkData.path}>
               {loginLinkData.text}
             </MenuItem>
-            {/* {user.id && (
-              <MenuItem component={Link} to="/info">
-                Info Page
-              </MenuItem> */}
-            /*{' '}
             <MenuItem
               component={Button}
               onClick={() => dispatch({ type: 'LOGOUT' })}
             >
               Logout
             </MenuItem>{' '}
-            */ /* <LogOutButton className="navLink" /> */
-            {/* )} */}
+            {/* <LogOutButton className="navLink" /> */}
           </Menu>
         </Toolbar>
       </AppBar>
     </div>
-
-    //     <Link className="navLink" to="/about">
-    //       About
-    //     </Link>
-    //   </div>
-    // </div>
   );
 }
 

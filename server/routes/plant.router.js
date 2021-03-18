@@ -67,6 +67,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:slug', (req, res) => {
   const trefleSlug = req.params.slug;
+  console.log('GET - plant by slug');
   axios
     .get(`http://trefle.io/api/v1/plants/${trefleSlug}`, {
       params: {

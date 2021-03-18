@@ -7,7 +7,25 @@ import './Footer.css';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 function Footer() {
-  return <footer>&copy; Prime Digital Academy</footer>;
+  return (
+    <div className="footer-clean">
+      <footer>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-3 item social">
+              {/* <a href="#">
+                <i class="icon ion-social-github"></i>
+              </a>
+              <a href="#">
+                <i class="icon ion-social-linkedin"></i>
+              </a> */}
+              <p className="copyright">John Shands © 2021</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
 export default Footer;
