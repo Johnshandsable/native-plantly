@@ -8,7 +8,7 @@ const {
 
 router.get('/dropdown', rejectUnauthenticated, (req, res) => {
   // console.log(req.user.id);
-  const sqlQuery = `SELECT "name" FROM "garden_sections" WHERE "user_id" = $1`;
+  const sqlQuery = `SELECT "id", "name" FROM "garden_sections" WHERE "user_id" = $1`;
   const userId = req.user.id;
 
   pool
