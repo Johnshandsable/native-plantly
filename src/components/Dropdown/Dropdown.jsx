@@ -21,7 +21,7 @@ function Dropdown() {
   };
 
   return (
-    <Select defaultValue="">
+    <Select defaultValue="None">
       <MenuItem>
         <em>None</em>
       </MenuItem>

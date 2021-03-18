@@ -14,7 +14,7 @@ router.get('/dropdown', rejectUnauthenticated, (req, res) => {
   pool
     .query(sqlQuery, [userId])
     .then((dbRes) => {
-      console.log('GET - dropdown res', dbRes);
+      // console.log('GET - dropdown res', dbRes);
       res.send(dbRes.rows);
     })
     .catch((err) => {
@@ -24,10 +24,10 @@ router.get('/dropdown', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/dropdown', rejectUnauthenticated, (req, res) => {
-  // console.log(req.user.id);
   const sqlQuery = `INSERT INTO "garden_sections" ("name", "user_id") VALUES ($1, $2);`;
   const sectionName = req.body.name;
   const userId = req.user.id;
+  // console.log(sectionName);
 
   pool
     .query(sqlQuery, [sectionName, userId])
