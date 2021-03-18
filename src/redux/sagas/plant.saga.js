@@ -31,10 +31,23 @@ function* getSinglePlantDetailView(action) {
   }
 }
 
+function* addPlant(action) {
+  try {
+    // console.log(action.payload);
+    yield axios.post(`/api/plant-details`, action.payload);
+    yield put({
+      type: 'GET_PLANTS',
+    });
+  } catch (err) {
+    console.error('CLIENT - post an error occurred', err);
+  }
+}
+
 function* plantSaga() {
   // listen for this and do function
   yield takeEvery('GET_PLANTS', getPlants);
   yield takeEvery('GET_SINGLE_PLANT_DETAIL_VIEW', getSinglePlantDetailView);
+  yield takeEvery('ADD_PLANT', addPlant);
 } // end plantSaga
 
 export default plantSaga;

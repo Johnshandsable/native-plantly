@@ -47,7 +47,7 @@ function LoginForm() {
 
   return (
     <div className={classes.root}>
-      <FormControl className="formPanel" onSubmit={login}>
+      <form onSubmit={login}>
         <Typography variant="h4">Login</Typography>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">
@@ -81,7 +81,7 @@ function LoginForm() {
         <div>
           <input className="btn" type="submit" name="submit" value="Log In" />
         </div>
-      </FormControl>
+      </form>
     </div>
   );
 }
