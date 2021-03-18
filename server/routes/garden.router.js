@@ -8,14 +8,14 @@ const {
 
 router.get('/dropdown', rejectUnauthenticated, (req, res) => {
   // console.log(req.user.id);
-  const sqlQuery = `SELECT * FROM "garden_sections" WHERE "user_id" = $1`;
+  const sqlQuery = `SELECT "name" FROM "garden_sections" WHERE "user_id" = $1`;
   const userId = req.user.id;
 
   pool
     .query(sqlQuery, [userId])
     .then((dbRes) => {
       console.log('GET - dropdown res', dbRes);
-      res.sendStatus(200);
+      res.send(dbRes.rows);
     })
     .catch((err) => {
       console.error('GET - dropdown error', err);
