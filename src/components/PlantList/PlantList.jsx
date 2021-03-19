@@ -21,18 +21,6 @@ function PlantList() {
     getGardenDropdown();
   }, []);
 
-  /*
-    useEffect(() => {
-    getGardenDropdown();
-    if (dropdownList === undefined) {
-      setDropdownSelection('None');
-    } else {
-      setDropdownSelection(dropdownList[0].id);
-    }
-  }, []);
-  };
-  */
-
   const getPlants = function () {
     dispatch({
       type: 'GET_PLANTS',

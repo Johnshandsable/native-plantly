@@ -25,10 +25,22 @@ function* addDropdown(action) {
   }
 }
 
+function* deleteDropdown(action) {
+  try {
+    yield axios.delete(`/garden/dropdown${action.payload}`);
+    yield put({
+      type: 'GET_DROPDOWN',
+    });
+  } catch (err) {
+    console.error('CLIENT - an error occurred deleting a dropdown');
+  }
+}
+
 function* gardenSaga() {
   // listen for this and do function
   yield takeLatest('GET_DROPDOWN', getDropdown);
   yield takeLatest('ADD_DROPDOWN_SECTION', addDropdown);
+  yield takeLatest('DELETE_DROPDOWN_SECTION', deleteDropdown);
 } // end plantSaga
 
 export default gardenSaga;
