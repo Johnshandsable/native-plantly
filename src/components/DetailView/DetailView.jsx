@@ -107,21 +107,23 @@ function DetailView() {
                 Average height:{' '}
                 {detailedPlant.main_species.specifications.average_height.cm
                   ? detailedPlant.main_species.specifications.average_height.cm
-                  : 'unknown'}
+                  : 'unknown'}{' '}
+                cm
               </Typography>
               <Typography gutterBottom component="p">
                 {/* detailedPlant.main_species.specifications.maximum_height.cm -> cm */}
                 Max height:{' '}
                 {detailedPlant.main_species.specifications.maximum_height.cm
                   ? detailedPlant.main_species.specifications.maximum_height.cm
-                  : 'unknown'}
+                  : 'unknown'}{' '}
+                cm
               </Typography>
               <Typography gutterBottom component="p">
                 {/* detailedPlant.main_species.duration -> perennial, etc. */}
                 Duration:{' '}
                 {detailedPlant.main_species.duration
                   ? detailedPlant.main_species.duration
-                  : 'unknown'}
+                  : 'perennial'}
               </Typography>
               <Typography gutterBottom component="p">
                 {/* detailedPlant.main_species.edible */}
@@ -142,10 +144,20 @@ function DetailView() {
                   : 'unknown'}
               </Typography>
 
-              <Typography gutterBottom component="p">
-                {/* {detailedPlant.main_species.sources.map((source) => {
-                  return source;
-                })} */}
+              <Typography gutterBottom component="p" variant="h6">
+                Additional Resources
+                {detailedPlant.main_species.sources.map((source) => {
+                  return (
+                    <Typography
+                      gutterBottom
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {source.name}: <a href={source.url}>{source.url}</a>
+                    </Typography>
+                  );
+                })}
               </Typography>
             </CardContent>
           </Card>

@@ -42,7 +42,6 @@ function PlantItem({ plant, dropdownList }) {
         },
       },
     });
-    history.push('/details');
   };
 
   return (
