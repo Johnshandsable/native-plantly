@@ -41,11 +41,28 @@ router.post('/dropdown', rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.put('/dropdown/:name', rejectUnauthenticated, (req, res) => {
+  const userId = req.user.id;
+  const newSectionName = req.params.name;
+  console.log(req.params.name);
+  const sqlQuery = `UPDATE "garden_sections" SET "name" = $1
+  WHERE "user_id" = $2;`;
+  console.log('inside put');
+
+  pool
+    .query(sqlQuery, [newSectionName, userId])
+    .then((dbRes) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error('PUT - an error occurred updating a dropdown', err);
+    });
+});
+
 router.delete('/dropdown/:id', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const sectionId = req.params.id;
   const sqlQuery = `DELETE FROM "garden_sections" WHERE "id" = $1 AND "user_id" = $2;`;
-
   pool
     .query(sqlQuery, [sectionId, userId])
     .then((dbRes) => {

@@ -27,7 +27,8 @@ function* addDropdown(action) {
 
 function* deleteDropdown(action) {
   try {
-    yield axios.delete(`/garden/dropdown${action.payload}`);
+    console.log('payload', action.payload);
+    yield axios.delete(`/garden/dropdown/${action.payload}`);
     yield put({
       type: 'GET_DROPDOWN',
     });
@@ -36,11 +37,24 @@ function* deleteDropdown(action) {
   }
 }
 
+function* editDropdown(action) {
+  try {
+    console.log('payload', action.payload);
+    yield axios.put(`/garden/dropdown/${action.payload}`);
+    yield put({
+      type: 'GET_DROPDOWN',
+    });
+  } catch (err) {
+    console.error('CLIENT - an error occurred updating a dropdown name');
+  }
+}
+
 function* gardenSaga() {
   // listen for this and do function
   yield takeLatest('GET_DROPDOWN', getDropdown);
   yield takeLatest('ADD_DROPDOWN_SECTION', addDropdown);
   yield takeLatest('DELETE_DROPDOWN_SECTION', deleteDropdown);
+  yield takeLatest('EDIT_DROPDOWN_SECTION', editDropdown);
 } // end plantSaga
 
 export default gardenSaga;

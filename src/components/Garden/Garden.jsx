@@ -13,17 +13,6 @@ import Button from '@material-ui/core/Button';
 
 function Garden() {
   const dispatch = useDispatch();
-  const dropdownList = useSelector((store) => store.garden);
-
-  useEffect(() => {
-    getGardenDropdown();
-  }, []);
-
-  const getGardenDropdown = () => {
-    dispatch({
-      type: 'GET_DROPDOWN',
-    });
-  }; // end getGardenDropdown
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,7 +29,7 @@ function Garden() {
 
   return (
     <div className={classes.root}>
-      <SimpleDropdown dropdownList={dropdownList} />
+      <SimpleDropdown />
       <CreateNewDropDownButton />
       <h1>hellooooooooooooo</h1>
     </div>

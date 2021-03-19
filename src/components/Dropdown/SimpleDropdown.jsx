@@ -3,20 +3,33 @@ import { useEffect, useState } from 'react';
 
 // SWEETALERT
 import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 // MATERIAL UI
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-function SimpleDropdown({ dropdownList }) {
+function SimpleDropdown() {
   const dispatch = useDispatch();
+  const dropdownList = useSelector((store) => store.garden);
   const [dropdownSelection, setDropdownSelection] = useState(
-    dropdownList[0].id || 'None'
+    dropdownList[0].id
   );
+
+  useEffect(() => {
+    getGardenDropdown();
+  }, []);
+
+  const getGardenDropdown = () => {
+    dispatch({
+      type: 'GET_DROPDOWN',
+    });
+  }; // end getGardenDropdown
 
   const handleSelectionChange = (evt) => {
     setDropdownSelection(evt.target.value);
+    console.log(dropdownSelection);
   };
 
   const handleDeleteCurrentSelection = (evt) => {
@@ -42,7 +55,19 @@ function SimpleDropdown({ dropdownList }) {
   };
 
   const renameCurrentSelection = (evt) => {
-    console.log('renaming');
+    Swal.fire({
+      title: `Rename your garden section`,
+      showCancelButton: true,
+      input: 'text',
+      inputPlaceholder: 'Write something',
+    }).then((result) => {
+      if (result.value) {
+        dispatch({
+          type: 'EDIT_DROPDOWN_SECTION',
+          payload: result.value,
+        });
+      }
+    });
   };
 
   return (
@@ -55,7 +80,7 @@ function SimpleDropdown({ dropdownList }) {
           onChange={handleSelectionChange}
         >
           {dropdownList.map((dropdownItem, index) => (
-            <MenuItem value={dropdownItem.id} key={dropdownItem.id}>
+            <MenuItem value={dropdownItem.id} key={index}>
               {dropdownItem.name}
             </MenuItem>
           ))}
