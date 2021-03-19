@@ -8,8 +8,8 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', async (req, res) => {
-  const searchToken = 'coreopsis'; // Will be coming from client-side
-  const searchState = 'MO'; // Will be coming from req.user.location
+  const searchToken = 'Sunflower'; // Will be coming from client-side
+  const searchState = req.user.location; // Will be coming from req.user.location
 
   try {
     const listOfPlants = await axios.post(

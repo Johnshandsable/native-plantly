@@ -1,13 +1,28 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-const getPlants = function* (action) {
+const getPlants = function* () {
   try {
     // gets data from server
-    console.log('in getPlants Saga');
-    const response = yield axios.get('/api/plant-details');
+    const response = yield axios.get(`/api/plant-details`);
 
     console.log('SAGAS - response', response.data);
+
+    yield put({
+      type: 'SET_PLANTS',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.error('SAGAS - ', err);
+  }
+}; // end getPlants
+
+const searchPlants = function* (action) {
+  try {
+    // gets data from server
+    console.log('payload', action.payload);
+    const response = yield axios.get(`/api/search/${action.payload}`);
+    // console.log('SAGAS - response', response.data);
 
     yield put({
       type: 'SET_PLANTS',
@@ -21,11 +36,14 @@ const getPlants = function* (action) {
 function* getSinglePlantDetailView(action) {
   try {
     console.log(action.payload);
-    const response = yield axios.get(`/api/plant-details/${action.payload}`);
+    const response = yield axios.get(
+      `/api/plant-details/${action.payload.data}`
+    );
     yield put({
       type: 'SET_DETAILED_PLANT',
       payload: response.data,
     });
+    action.payload.onComplete();
   } catch (err) {
     console.error('SAGAS - ', err);
   }
@@ -48,6 +66,7 @@ function* plantSaga() {
   yield takeLatest('GET_PLANTS', getPlants);
   yield takeLatest('GET_SINGLE_PLANT_DETAIL_VIEW', getSinglePlantDetailView);
   yield takeLatest('ADD_PLANT', addPlant);
+  yield takeLatest('SEARCH_PLANTS', searchPlants);
 } // end plantSaga
 
 export default plantSaga;

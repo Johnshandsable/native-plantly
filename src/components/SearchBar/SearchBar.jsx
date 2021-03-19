@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 // MATERIAL UI
 import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -7,6 +10,8 @@ import InputBase from '@material-ui/core/InputBase';
 import SendIcon from '@material-ui/icons/Send';
 
 function SearchBar() {
+  const dispatch = useDispatch();
+  const [searchValue, setSearchValue] = useState('');
   const useStyles = makeStyles((theme) => ({
     search: {
       position: 'relative',
@@ -41,8 +46,18 @@ function SearchBar() {
 
   // Event handlers
   const handleSearch = (evt) => {
-    console.log(evt);
-    console.log('search is happening');
+    if (searchValue === '') {
+      return;
+    } else {
+      dispatch({
+        type: 'SEARCH_PLANTS',
+        payload: searchValue,
+      });
+    }
+  };
+
+  const handleChangeSearchValue = (evt) => {
+    setSearchValue(evt.target.value);
   };
 
   return (
@@ -60,6 +75,8 @@ function SearchBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              value={searchValue}
+              onChange={handleChangeSearchValue}
             />
           </Grid>
         </Grid>

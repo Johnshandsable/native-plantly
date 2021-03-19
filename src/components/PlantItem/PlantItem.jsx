@@ -35,12 +35,12 @@ function PlantItem({ plant, dropdownList }) {
     console.log(evt.target.name);
     dispatch({
       type: 'GET_SINGLE_PLANT_DETAIL_VIEW',
-      payload: evt.target.name,
-      // onComplete: () => {
-      //   console.log('all done!');
-      //   history.push('/details');
-      // },
-      // onComplete: history.push(`/details/`),
+      payload: {
+        data: evt.target.name,
+        onComplete: () => {
+          history.push('/details');
+        },
+      },
     });
     history.push('/details');
   };
@@ -67,7 +67,7 @@ function PlantItem({ plant, dropdownList }) {
               className="card-image"
               name={plant.image.slug}
               onClick={handleClickGoToDetailView}
-              src={process.env.PUBLIC_URL + '/sumac.jpg'}
+              src={process.env.PUBLIC_URL + '/image_not_found.jpg'}
               alt={plant.primaryCommonName}
             />
           )}
