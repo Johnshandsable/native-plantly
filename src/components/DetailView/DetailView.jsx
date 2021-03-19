@@ -30,7 +30,8 @@ function DetailView() {
   // Setup classes
   const classes = useStyles();
 
-  console.log(detailedPlant);
+  console.log('detailedPlant', detailedPlant);
+
   return (
     <div className={classes.root}>
       {' '}

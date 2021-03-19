@@ -24,6 +24,7 @@ import UserPage from '../UserPage/UserPage';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import './App.css';
+let array = [];
 
 function App() {
   const dispatch = useDispatch();
