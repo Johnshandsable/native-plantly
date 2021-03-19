@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 const plantReducer = (state = [], action) => {
-  console.log('Plant Reducer - ', action.payload);
+  // console.log('Plant Reducer - ', action.payload);
   switch (action.type) {
     case 'SET_PLANTS':
       return action.payload;
@@ -10,8 +10,8 @@ const plantReducer = (state = [], action) => {
   }
 };
 
-const singlePlantReducer = (state = '', action) => {
-  console.log('Single Plant Reducer - ', action.payload);
+const singlePlantReducer = (state = {}, action) => {
+  // console.log('Single Plant Reducer - ', action.payload);
   switch (action.type) {
     case 'SET_DETAILED_PLANT':
       return action.payload;

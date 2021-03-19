@@ -36,8 +36,13 @@ function PlantItem({ plant }) {
     dispatch({
       type: 'GET_SINGLE_PLANT_DETAIL_VIEW',
       payload: evt.target.name,
+      // onComplete: () => {
+      //   console.log('all done!');
+      //   history.push('/details');
+      // },
+      // onComplete: history.push(`/details/`),
     });
-    history.push(`/details/`);
+    history.push('/details');
   };
 
   return (

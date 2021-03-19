@@ -9,16 +9,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 function Dropdown({ plant }) {
   const dispatch = useDispatch();
   const dropdownList = useSelector((store) => store.garden.gardenReducer);
-  const [dropdownSelection, setDropdownSelection] = useState(
-    'None' || dropdownList[0].id
-  );
+  const [dropdownSelection, setDropdownSelection] = useState('None');
 
   useEffect(() => {
     getGardenDropdown();
+    if (dropdownList === undefined) {
+      setDropdownSelection('None');
+    } else {
+      setDropdownSelection(dropdownList[0].id);
+    }
   }, []);
 
   const getGardenDropdown = () => {
-    // console.log('grabbing dropdown selections');
     dispatch({
       type: 'GET_DROPDOWN',
     });
@@ -29,8 +31,6 @@ function Dropdown({ plant }) {
       // TODO: Handle this better
       return;
     } else {
-      // console.log('plant', { plant });
-      // console.log(plant.image.slug, plant.natureServeid, dropdownSelection);
       dispatch({
         type: 'ADD_PLANT',
         payload: {
@@ -46,10 +46,8 @@ function Dropdown({ plant }) {
     setDropdownSelection(evt.target.value);
   };
 
-  console.log('list', dropdownList);
-
   return (
-    <>
+    <div>
       <Button
         size="small"
         color="primary"
@@ -57,20 +55,25 @@ function Dropdown({ plant }) {
       >
         Add to List
       </Button>
-      <Select
-        // defaultValue={dropdownList[0].id ? dropdownList[0].id : 'None'}
-        onChange={handleSelectionChange}
-      >
-        {/* <MenuItem>
-          <em>None</em>
-        </MenuItem> */}
-        {dropdownList.map((dropdownItem, index) => (
-          <MenuItem value={dropdownItem.id} key={dropdownItem.id}>
-            {dropdownItem.name}
+      {dropdownList !== undefined ? (
+        <Select
+          defaultValue={dropdownList[0].id}
+          onChange={handleSelectionChange}
+        >
+          {dropdownList.map((dropdownItem, index) => (
+            <MenuItem value={dropdownItem.id} key={dropdownItem.id}>
+              {dropdownItem.name}
+            </MenuItem>
+          ))}
+        </Select>
+      ) : (
+        <Select defaultValue="None" onChange={handleSelectionChange}>
+          <MenuItem>
+            <em>None</em>
           </MenuItem>
-        ))}
-      </Select>
-    </>
+        </Select>
+      )}
+    </div>
   );
 }
 
