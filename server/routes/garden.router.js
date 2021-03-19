@@ -41,4 +41,19 @@ router.post('/dropdown', rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.delete('/dropdown/:id', rejectUnauthenticated, (req, res) => {
+  const userId = req.user.id;
+  const sectionId = req.params.id;
+  const sqlQuery = `DELETE FROM "garden_sections" WHERE "id" = $1 AND "user_id" = $2;`;
+
+  pool
+    .query(sqlQuery, [sectionId, userId])
+    .then((dbRes) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error('DELETE - dropdown an error occurred', err);
+    });
+});
+
 module.exports = router;
