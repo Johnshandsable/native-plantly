@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import Dropdown from '../Dropdown/Dropdown';
 import CreateNewDropdownButton from '../Buttons/CreateNewDropdownButton';
 
-function PlantItem({ plant }) {
+function PlantItem({ plant, dropdownList }) {
   /*
       -------Display Order-------
       Kingdom: Plantae
@@ -86,7 +86,7 @@ function PlantItem({ plant }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Dropdown plant={plant} />
+          <Dropdown plant={plant} dropdownList={dropdownList} />
           <CreateNewDropdownButton />
         </CardActions>
       </Card>

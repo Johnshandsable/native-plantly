@@ -6,25 +6,26 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-function Dropdown({ plant }) {
+function Dropdown({ plant, dropdownList }) {
   const dispatch = useDispatch();
-  const dropdownList = useSelector((store) => store.garden.gardenReducer);
-  const [dropdownSelection, setDropdownSelection] = useState('None');
+  console.log('dropdownList', dropdownList);
+  // const dropdownList = useSelector((store) => store.garden.gardenReducer);
+  // const [dropdownSelection, setDropdownSelection] = useState('None');
 
-  useEffect(() => {
-    getGardenDropdown();
-    if (dropdownList === undefined) {
-      setDropdownSelection('None');
-    } else {
-      setDropdownSelection(dropdownList[0].id);
-    }
-  }, []);
+  // useEffect(() => {
+  //   getGardenDropdown();
+  //   if (dropdownList === undefined) {
+  //     setDropdownSelection('None');
+  //   } else {
+  //     setDropdownSelection(dropdownList[0].id);
+  //   }
+  // }, []);
 
-  const getGardenDropdown = () => {
-    dispatch({
-      type: 'GET_DROPDOWN',
-    });
-  };
+  // const getGardenDropdown = () => {
+  //   dispatch({
+  //     type: 'GET_DROPDOWN',
+  //   });
+  // };
 
   const handleSubmitToGardenSection = () => {
     if (dropdownSelection === '') {
