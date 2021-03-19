@@ -10,6 +10,4 @@ const gardenReducer = (state = [], action) => {
   }
 };
 
-export default combineReducers({
-  gardenReducer,
-});
+export default gardenReducer;

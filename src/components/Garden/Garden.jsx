@@ -17,7 +17,7 @@ function Garden() {
 
   return (
     <div className={classes.root}>
-      <h1>hi</h1>
+      <h1>hellooooooooooooo</h1>
     </div>
   );
 }
