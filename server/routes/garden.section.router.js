@@ -10,8 +10,10 @@ const {
 router.get('/:id', rejectUnauthenticated, (req, res) => {
   const selectionId = req.params.id;
   const userId = req.user.id;
+  console.log('USER ID', userId);
+  console.log('SELECTION', selectionId);
   const sqlQuery = `
-  SELECT * 
+  SELECT "trefle_slug" 
   FROM "garden_sections" 
   JOIN "plants" ON "plants".section_id = "garden_sections".id
   WHERE "garden_sections".user_id = $1 AND "garden_sections".id = $2`;
@@ -19,8 +21,20 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(sqlQuery, [userId, selectionId])
     .then((dbRes) => {
-      console.log(dbRes);
-      res.sendStatus(200);
+      // console.log(dbRes.rows);
+      // console.log(typeof dbRes.rows);
+      // console.log(typeof dbRes);
+      // for (const [key, value] of Object.entries(dbRes.rows)) {
+      //   console.log([value]['trefle_slug']);
+      // }
+      const arrayOfPlants = [];
+      for (const item of dbRes.rows) {
+        if (item.trefle_slug) {
+          arrayOfPlants.push(item.trefle_slug);
+        }
+      }
+
+      res.send(dbRes.rows);
     })
     .catch((err) => {
       console.error('GET - plants by section an error occurred', err);

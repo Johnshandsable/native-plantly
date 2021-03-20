@@ -61,12 +61,22 @@ function* addPlant(action) {
   }
 }
 
+function* getPlantsBySection(action) {
+  try {
+    const response = yield axios.get(`/api/section/${action.payload}`);
+    console.log('response', response.data);
+  } catch (err) {
+    console.error('CLIENT - get plant by section an error occurred', err);
+  }
+}
+
 function* plantSaga() {
   // listen for this and do function
   yield takeLatest('GET_PLANTS', getPlants);
   yield takeLatest('GET_SINGLE_PLANT_DETAIL_VIEW', getSinglePlantDetailView);
   yield takeLatest('ADD_PLANT', addPlant);
   yield takeLatest('SEARCH_PLANTS', searchPlants);
+  yield takeLatest('GET_PLANTS_BY_SECTION', getPlantsBySection);
 } // end plantSaga
 
 export default plantSaga;

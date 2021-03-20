@@ -19,6 +19,7 @@ function SimpleDropdown() {
 
   useEffect(() => {
     getGardenDropdown();
+    getPlantsBySection();
   }, []);
 
   const getGardenDropdown = () => {
@@ -27,9 +28,19 @@ function SimpleDropdown() {
     });
   }; // end getGardenDropdown
 
+  const getPlantsBySection = () => {
+    dispatch({
+      type: 'GET_PLANTS_BY_SECTION',
+      payload: dropdownSelection,
+    });
+  };
+
   const handleSelectionChange = (evt) => {
+    console.log('CURRENT - ', dropdownSelection);
+    console.log('INCOMING VALUE -', evt.target.value);
     setDropdownSelection(evt.target.value);
-    console.log(dropdownSelection);
+    console.log('UPDATED - ', dropdownSelection);
+    getPlantsBySection();
   };
 
   const handleDeleteCurrentSelection = (evt) => {

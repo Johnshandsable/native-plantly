@@ -20,7 +20,17 @@ const singlePlantReducer = (state = {}, action) => {
   }
 };
 
+const plantsBySectionReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_PLANTS_BY_SECTION':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   plantReducer,
   singlePlantReducer,
+  plantsBySectionReducer,
 });
