@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 // MATERIAL UI
 import Button from '@material-ui/core/Button';
@@ -20,7 +20,7 @@ function Dropdown({ plant, dropdownList }) {
       dispatch({
         type: 'ADD_PLANT',
         payload: {
-          trefle_slug: plant.image.slug,
+          trefle_slug: plant.slug,
           section_id: dropdownSelection,
         },
       });

@@ -94,12 +94,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   */
   const userId = req.user.id;
   const trefleSlug = req.body.trefle_slug;
-  const natureServeId = req.body.natureserve_id;
   const sectionId = req.body.section_id;
 
-  const sqlQuery = `INSERT INTO "plants" ("user_id", "trefle_slug", "natureserve_id", "section_id") VALUES ($1, $2, $3, $4);`;
+  const sqlQuery = `INSERT INTO "plants" ("user_id", "trefle_slug", "section_id") VALUES ($1, $2, $3);`;
   pool
-    .query(sqlQuery, [userId, trefleSlug, natureServeId, sectionId])
+    .query(sqlQuery, [userId, trefleSlug, sectionId])
     .then((dbRes) => {
       console.log('POST - plant', dbRes);
       res.sendStatus(201); // CREATED

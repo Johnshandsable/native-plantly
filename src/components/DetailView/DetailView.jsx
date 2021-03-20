@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 // CUSTOM COMPONENTS
+import DetailViewDropdown from '../Dropdown/DetailViewDropdown';
 import NavigateHomeButton from '../Buttons/NavigateHomeButton';
 import bundleCarouselData from '../../helpers/bundleCarouselData';
+import Dropdown from '../Dropdown/Dropdown';
 
 // MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,8 +22,22 @@ import Typography from '@material-ui/core/Typography';
 import './Carousel.css';
 
 function DetailView() {
+  const dispatch = useDispatch();
   const detailedPlant = useSelector((store) => store.plants.singlePlantReducer);
   const bundledData = bundleCarouselData(detailedPlant.main_species.images);
+  const dropdownList = useSelector((store) => store.garden);
+
+  // ON LOAD GET DROPDOWN
+  useEffect(() => {
+    getGardenDropdown();
+  }, []);
+  // USED FOR GETTING DROPDOWN
+  const getGardenDropdown = () => {
+    dispatch({
+      type: 'GET_DROPDOWN',
+    });
+  }; // end getGardenDropdown
+
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -38,8 +54,6 @@ function DetailView() {
   }));
   // Setup classes
   const classes = useStyles();
-
-  console.log('detailedPlant', detailedPlant);
 
   return (
     <div className={classes.root}>
@@ -88,9 +102,10 @@ function DetailView() {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
-                Add to List
-              </Button>
+              <DetailViewDropdown
+                plant={detailedPlant}
+                dropdownList={dropdownList}
+              />
             </CardActions>
           </Card>
         </Grid>
