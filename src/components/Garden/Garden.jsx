@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 // CUSTOM COMPONENTS
-import SimpleDropdown from '../Dropdown/SimpleDropdown';
+import GardenDropdown from '../Dropdown/GardenDropdown';
 import CreateNewDropDownButton from '../Buttons/CreateNewDropdownButton';
 
 // MATERIAL UI
@@ -29,9 +29,8 @@ function Garden() {
 
   return (
     <div className={classes.root}>
-      <SimpleDropdown />
       <CreateNewDropDownButton />
-      <h1>hellooooooooooooo</h1>
+      <GardenDropdown />
     </div>
   );
 }

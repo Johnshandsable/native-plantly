@@ -38,6 +38,7 @@ function App() {
     palette: {
       primary: {
         main: '#83a668',
+        error: '#d63031',
       },
       secondary: {
         main: '#abc9cb',
