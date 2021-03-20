@@ -1,7 +1,9 @@
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 
+// CUSTOM COMPONENTS
 import NavigateHomeButton from '../Buttons/NavigateHomeButton';
+import bundleCarouselData from '../../helpers/bundleCarouselData';
 
 // MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,7 +21,7 @@ import './Carousel.css';
 
 function DetailView() {
   const detailedPlant = useSelector((store) => store.plants.singlePlantReducer);
-
+  const bundledData = bundleCarouselData(detailedPlant.main_species.images);
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -144,7 +146,7 @@ function DetailView() {
                   : 'unknown'}
               </Typography>
 
-              <Typography gutterBottom component="p" variant="h6">
+              <Typography gutterBottom variant="h6">
                 Additional Resources
                 {detailedPlant.main_species.sources.map((source) => {
                   return (
