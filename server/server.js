@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const plantRouter = require('./routes/plant.router');
+const searchRouter = require('./routes/search.router');
 const gardenRouter = require('./routes/garden.router');
 require('dotenv').config();
 
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/plant-details', plantRouter);
 app.use('/garden', gardenRouter);
+app.use('/api/search', searchRouter);
 
 // Serve static files
 app.use(express.static('build'));

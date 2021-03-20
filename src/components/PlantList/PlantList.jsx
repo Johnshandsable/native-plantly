@@ -14,16 +14,24 @@ import Typography from '@material-ui/core/Typography';
 function PlantList() {
   const dispatch = useDispatch();
   const plantList = useSelector((store) => store.plants.plantReducer);
+  const dropdownList = useSelector((store) => store.garden);
 
   useEffect(() => {
     getPlants();
+    getGardenDropdown();
   }, []);
 
   const getPlants = function () {
     dispatch({
       type: 'GET_PLANTS',
     });
-  }; // end getFavorites
+  }; // end getPlants
+
+  const getGardenDropdown = () => {
+    dispatch({
+      type: 'GET_DROPDOWN',
+    });
+  }; // end getGardenDropdown
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,7 +57,9 @@ function PlantList() {
           <Typography variant="h1">Native Plants</Typography>
         </Grid> -- May be used for showing what area plants are native to */}
         {plantList.map((plant, index) => {
-          return <PlantItem key={index} plant={plant} />;
+          return (
+            <PlantItem key={index} plant={plant} dropdownList={dropdownList} />
+          );
         })}
       </Grid>
     </div>

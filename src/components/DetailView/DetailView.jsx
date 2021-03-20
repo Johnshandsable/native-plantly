@@ -1,4 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+
+// CUSTOM COMPONENTS
+import DetailViewDropdown from '../Dropdown/DetailViewDropdown';
+import NavigateHomeButton from '../Buttons/NavigateHomeButton';
+import bundleCarouselData from '../../helpers/bundleCarouselData';
+import Dropdown from '../Dropdown/Dropdown';
 
 // MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,7 +22,21 @@ import Typography from '@material-ui/core/Typography';
 import './Carousel.css';
 
 function DetailView() {
+  const dispatch = useDispatch();
   const detailedPlant = useSelector((store) => store.plants.singlePlantReducer);
+  const bundledData = bundleCarouselData(detailedPlant.main_species.images);
+  const dropdownList = useSelector((store) => store.garden);
+
+  // ON LOAD GET DROPDOWN
+  useEffect(() => {
+    getGardenDropdown();
+  }, []);
+  // USED FOR GETTING DROPDOWN
+  const getGardenDropdown = () => {
+    dispatch({
+      type: 'GET_DROPDOWN',
+    });
+  }; // end getGardenDropdown
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,15 +47,20 @@ function DetailView() {
       marginRight: 20,
       height: 'fixed',
     },
+    spacing: {
+      marginTop: 20,
+      marginBottom: 20,
+    },
   }));
   // Setup classes
   const classes = useStyles();
 
-  console.log(detailedPlant);
   return (
     <div className={classes.root}>
       {' '}
       {/* spacing of Grid must be used on container */}
+      <NavigateHomeButton />
+      <div className={classes.spacing}></div>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
           <Card>
@@ -76,9 +102,10 @@ function DetailView() {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
-                Add to List
-              </Button>
+              <DetailViewDropdown
+                plant={detailedPlant}
+                dropdownList={dropdownList}
+              />
             </CardActions>
           </Card>
         </Grid>
@@ -97,21 +124,23 @@ function DetailView() {
                 Average height:{' '}
                 {detailedPlant.main_species.specifications.average_height.cm
                   ? detailedPlant.main_species.specifications.average_height.cm
-                  : 'unknown'}
+                  : 'unknown'}{' '}
+                cm
               </Typography>
               <Typography gutterBottom component="p">
                 {/* detailedPlant.main_species.specifications.maximum_height.cm -> cm */}
                 Max height:{' '}
                 {detailedPlant.main_species.specifications.maximum_height.cm
                   ? detailedPlant.main_species.specifications.maximum_height.cm
-                  : 'unknown'}
+                  : 'unknown'}{' '}
+                cm
               </Typography>
               <Typography gutterBottom component="p">
                 {/* detailedPlant.main_species.duration -> perennial, etc. */}
                 Duration:{' '}
                 {detailedPlant.main_species.duration
                   ? detailedPlant.main_species.duration
-                  : 'unknown'}
+                  : 'perennial'}
               </Typography>
               <Typography gutterBottom component="p">
                 {/* detailedPlant.main_species.edible */}
@@ -132,10 +161,20 @@ function DetailView() {
                   : 'unknown'}
               </Typography>
 
-              <Typography gutterBottom component="p">
-                {/* {detailedPlant.main_species.sources.map((source) => {
-                  return source;
-                })} */}
+              <Typography gutterBottom variant="h6">
+                Additional Resources
+                {detailedPlant.main_species.sources.map((source) => {
+                  return (
+                    <Typography
+                      gutterBottom
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {source.name}: <a href={source.url}>{source.url}</a>
+                    </Typography>
+                  );
+                })}
               </Typography>
             </CardContent>
           </Card>

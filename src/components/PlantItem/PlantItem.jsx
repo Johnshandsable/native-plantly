@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import Dropdown from '../Dropdown/Dropdown';
 import CreateNewDropdownButton from '../Buttons/CreateNewDropdownButton';
 
-function PlantItem({ plant }) {
+function PlantItem({ plant, dropdownList }) {
   /*
       -------Display Order-------
       Kingdom: Plantae
@@ -35,9 +35,13 @@ function PlantItem({ plant }) {
     console.log(evt.target.name);
     dispatch({
       type: 'GET_SINGLE_PLANT_DETAIL_VIEW',
-      payload: evt.target.name,
+      payload: {
+        data: evt.target.name,
+        onComplete: () => {
+          history.push('/details');
+        },
+      },
     });
-    history.push(`/details/`);
   };
 
   return (
@@ -62,7 +66,7 @@ function PlantItem({ plant }) {
               className="card-image"
               name={plant.image.slug}
               onClick={handleClickGoToDetailView}
-              src={process.env.PUBLIC_URL + '/sumac.jpg'}
+              src={process.env.PUBLIC_URL + '/image_not_found.jpg'}
               alt={plant.primaryCommonName}
             />
           )}
@@ -81,7 +85,7 @@ function PlantItem({ plant }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Dropdown plant={plant} />
+          <Dropdown plant={plant} dropdownList={dropdownList} />
           <CreateNewDropdownButton />
         </CardActions>
       </Card>

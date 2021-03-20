@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 // LOCAL STATE
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 // MATERIAL UI
 import AppBar from '@material-ui/core/AppBar';
@@ -20,6 +21,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
   let loginLinkData = {
     path: '/login',

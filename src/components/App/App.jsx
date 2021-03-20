@@ -12,6 +12,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import DetailView from '../DetailView/DetailView';
 import Footer from '../Footer/Footer';
+import Garden from '../Garden/Garden';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import Nav from '../Nav/Nav';
@@ -24,6 +25,7 @@ import UserPage from '../UserPage/UserPage';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import './App.css';
+let array = [];
 
 function App() {
   const dispatch = useDispatch();
@@ -69,7 +71,9 @@ function App() {
             </Route>
 
             {/* My Gardens Route */}
-            <ProtectedRoute path="/my-gardens"></ProtectedRoute>
+            <ProtectedRoute path="/my-gardens">
+              <Garden />
+            </ProtectedRoute>
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
