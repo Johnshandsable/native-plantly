@@ -7,12 +7,9 @@ function bundleCarouselData(images) {
       if (item.image_url) {
         newArray.push(item.image_url);
       }
-      console.log(newArray);
-      console.log(item);
     }
   }
-  // console.log(newArray);
-  return;
+  return newArray;
 }
 
 export default bundleCarouselData;
