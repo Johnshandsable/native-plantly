@@ -7,7 +7,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 // GET plants by garden section id
-router.get('/:id', rejectUnauthenticated, (req, res) => {
+router.get('/:id', async (req, res) => {
   const selectionId = req.params.id;
   const userId = req.user.id;
   console.log('USER ID', userId);
@@ -21,16 +21,18 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   pool
     .query(sqlQuery, [userId, selectionId])
     .then((dbRes) => {
-      // console.log(dbRes.rows);
-      // console.log(typeof dbRes.rows);
-      // console.log(typeof dbRes);
-      // for (const [key, value] of Object.entries(dbRes.rows)) {
-      //   console.log([value]['trefle_slug']);
-      // }
       const arrayOfPlants = [];
       for (const item of dbRes.rows) {
         if (item.trefle_slug) {
-          arrayOfPlants.push(item.trefle_slug);
+          const data = axios.get(
+            `http://trefle.io/api/v1/plants/${item.trefle_slug}`,
+            {
+              params: {
+                token: process.env.TREFLE_API_KEY,
+              },
+            }
+          );
+          console.log('data', data);
         }
       }
 
