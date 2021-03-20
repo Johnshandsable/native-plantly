@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const plantRouter = require('./routes/plant.router');
 const searchRouter = require('./routes/search.router');
 const gardenRouter = require('./routes/garden.router');
+const gardenSectionRouter = require('./routes/garden.section.router');
 require('dotenv').config();
 
 const app = express();
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/plant-details', plantRouter);
 app.use('/garden', gardenRouter);
 app.use('/api/search', searchRouter);
+app.use('/api/section', gardenSectionRouter);
 
 // Serve static files
 app.use(express.static('build'));

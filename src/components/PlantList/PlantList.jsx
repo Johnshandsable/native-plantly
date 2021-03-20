@@ -17,8 +17,8 @@ function PlantList() {
   const dropdownList = useSelector((store) => store.garden);
 
   useEffect(() => {
-    getPlants();
     getGardenDropdown();
+    getPlants();
   }, []);
 
   const getPlants = function () {

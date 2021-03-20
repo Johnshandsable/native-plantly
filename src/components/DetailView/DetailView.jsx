@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 // CUSTOM COMPONENTS
 import DetailViewDropdown from '../Dropdown/DetailViewDropdown';
 import NavigateHomeButton from '../Buttons/NavigateHomeButton';
-import bundleCarouselData from '../../helpers/bundleCarouselData';
+import bundleCarouselData from '../../helpers/BundleCarouselData';
 import Dropdown from '../Dropdown/Dropdown';
 
 // MATERIAL UI
