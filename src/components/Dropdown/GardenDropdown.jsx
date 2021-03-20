@@ -10,12 +10,13 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-function SimpleDropdown() {
+function GardenDropdown() {
   const dispatch = useDispatch();
   const dropdownList = useSelector((store) => store.garden);
   const [dropdownSelection, setDropdownSelection] = useState(
     dropdownList[0].id
   );
+  const [gardenList, setGardenList] = useState([]);
 
   useEffect(() => {
     getGardenDropdown();
@@ -87,8 +88,9 @@ function SimpleDropdown() {
       <Button onClick={renameCurrentSelection}>Edit</Button>
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
-          defaultValue={dropdownList[0].id}
+          defaultValue={dropdownSelection}
           onChange={handleSelectionChange}
+          value={dropdownSelection}
         >
           {dropdownList.map((dropdownItem, index) => (
             <MenuItem value={dropdownItem.id} key={index}>
@@ -103,8 +105,14 @@ function SimpleDropdown() {
           </MenuItem>
         </Select>
       )}
+      {/* Start of Garden Data Processing */}
+      {gardenList.length > 0 ? (
+        <h1>hello</h1>
+      ) : (
+        <h1>No plants currently in garden</h1>
+      )}
     </div>
   );
 }
 
-export default SimpleDropdown;
+export default GardenDropdown;

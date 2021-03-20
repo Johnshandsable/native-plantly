@@ -107,33 +107,5 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       console.error('POST - plant an error occurred', err);
     });
 });
-/*
-router.get('/plants', async (req, res) => {
-  let plantsRes = await pool.query(`
-    SELECT FROM user_plants
-    WHERE user_id=$1
-  `, [req.user.id]);
-  /**
-   * [
-   *    {
-   *      id: 7,
-   *      treffle_id: 'akjsdfh987234kjasdf',
-   *      natureserver_id: '0918324jnx'
-   *    }
-   * ]
-   */
-//  let allTheData = await Promise.all(plantsRes.rows.map(async plant => {
-//   let treffleRes = await axios.get(`treffle.com/whatever/${plant.treffle_id}`);
-//   let natureServerRes = await axios.get(`natureserver.com/whatever/${plant.natureserver_id}`);
-//   return {
-//     treffleData: treffleRes.data,
-//     natureServerDat: natureServerRes.data
-
-/*
-    router.get('', ()=> {
-      await send to api [1, 2, 3, 4, 5, 6, 7, 8]
-      await send to api [1, 2, 3, 4, 5, 6, 7, 8]
-    })
-*/
 
 module.exports = router;
