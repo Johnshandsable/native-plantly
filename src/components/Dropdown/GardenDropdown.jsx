@@ -5,10 +5,14 @@ import { useEffect, useState } from 'react';
 import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 
+// CUSTOM COMPONENTS
+import GardenTable from '../Tables/GardenTable';
+
 // MATERIAL UI
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
 
 function GardenDropdown() {
   const dispatch = useDispatch();
@@ -16,11 +20,12 @@ function GardenDropdown() {
   const [dropdownSelection, setDropdownSelection] = useState(
     dropdownList[0].id
   );
-  const [gardenList, setGardenList] = useState([]);
+  const gardenList = useSelector(
+    (store) => store.plants.plantsBySectionReducer
+  );
 
   useEffect(() => {
     getGardenDropdown();
-    getPlantsBySection();
   }, []);
 
   const getGardenDropdown = () => {
@@ -30,9 +35,15 @@ function GardenDropdown() {
   }; // end getGardenDropdown
 
   const getPlantsBySection = () => {
+    console.log('dropdownSelection', dropdownSelection);
     dispatch({
       type: 'GET_PLANTS_BY_SECTION',
-      payload: dropdownSelection,
+      payload: {
+        data: dropdownSelection,
+        onComplete: () => {
+          console.log('gardenList', gardenList);
+        },
+      },
     });
   };
 
@@ -82,6 +93,8 @@ function GardenDropdown() {
     });
   };
 
+  console.log('dropdownSelection', dropdownSelection);
+
   return (
     <div>
       <Button onClick={handleDeleteCurrentSelection}>Delete</Button>
@@ -90,7 +103,6 @@ function GardenDropdown() {
         <Select
           defaultValue={dropdownSelection}
           onChange={handleSelectionChange}
-          value={dropdownSelection}
         >
           {dropdownList.map((dropdownItem, index) => (
             <MenuItem value={dropdownItem.id} key={index}>
@@ -106,10 +118,12 @@ function GardenDropdown() {
         </Select>
       )}
       {/* Start of Garden Data Processing */}
-      {gardenList.length > 0 ? (
-        <h1>hello</h1>
+      {gardenList || gardenList.length === 0 ? (
+        <Typography>
+          Add plants to your Garden and they'll appear below!
+        </Typography>
       ) : (
-        <h1>No plants currently in garden</h1>
+        <GardenTable />
       )}
     </div>
   );
