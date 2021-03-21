@@ -80,7 +80,7 @@ function DetailView() {
                   className="card-image"
                   name={detailedPlant.slug}
                   // onClick={handleClickGoToDetailView}
-                  src={process.env.PUBLIC_URL + '/sumac.jpg'}
+                  src={process.env.PUBLIC_URL + '/image_not_found.jpg'}
                   alt={detailedPlant.common_name}
                 />
               )}
