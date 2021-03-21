@@ -58,13 +58,18 @@ function GardenItem({ plant }) {
               <MoreVertIcon />
             </IconButton>
           }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
+          // plant.main_species.common_name
+          title={plant.main_species.common_name}
+          subheader={plant.family_common_name}
         />
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
+          image={
+            plant.image_url
+              ? plant.image_url
+              : process.env.PUBLIC_URL + '/image_not_found.jpg'
+          }
+          title={plant.observations ? plant.observations : 'U.S.A.'}
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">

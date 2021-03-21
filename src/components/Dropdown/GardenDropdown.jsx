@@ -52,6 +52,7 @@ function GardenDropdown() {
     console.log('CURRENT - ', dropdownSelection);
     console.log('INCOMING VALUE -', evt.target.value);
     setDropdownSelection(evt.target.value);
+    setDropdownSelection(evt.target.value);
     console.log('UPDATED - ', dropdownSelection);
     getPlantsBySection();
   };
@@ -124,7 +125,7 @@ function GardenDropdown() {
           Add plants to your Garden and they'll appear below!
         </Typography>
       ) : (
-        <GardenTable />
+        <GardenTable gardenList={gardenList} />
       )}
     </div>
   );

@@ -22,11 +22,11 @@ const searchPlants = function* (action) {
     // gets data from server
     console.log('payload', action.payload);
     const response = yield axios.get(`/api/search/${action.payload}`);
-    console.log('SAGAS - response', response);
+    console.log('SAGAS - response', response.data);
 
     yield put({
       type: 'SET_PLANTS',
-      payload: response,
+      payload: response.data,
     });
   } catch (err) {
     console.error('SAGAS - ', err);
@@ -66,10 +66,10 @@ function* getPlantsBySection(action) {
     console.log('action', action);
     const response = yield axios.get(`/api/section/${action.payload.data}`);
     console.log('response', response.data);
-    if (response.data === undefined || response.data.length <= 0) {
-      console.log('invalid response');
-      return;
-    }
+    // if (response.data === undefined || response.data.length <= 0) {
+    //   console.log('invalid response');
+    //   return;
+    // }
     yield put({
       type: 'SET_PLANTS_BY_SECTION',
       payload: response.data,
