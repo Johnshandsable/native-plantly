@@ -65,9 +65,9 @@ function SearchBar() {
       <div className={classes.search}>
         <Grid>
           <Grid item xs={3}>
-            <div className={classes.searchIcon}>
+            {/* <div className={classes.searchIcon}>
               <SearchIcon />
-            </div>
+            </div> */}
             <InputBase
               placeholder="search by species..."
               classes={{

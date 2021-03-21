@@ -69,13 +69,12 @@ function GardenItem({ plant }) {
               ? plant.image_url
               : process.env.PUBLIC_URL + '/image_not_found.jpg'
           }
-          title={plant.observations ? plant.observations : 'U.S.A.'}
+          title={plant.main_species.common_name}
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            {plant.main_species.scientific_name} <br />
+            Found: {plant.observations ? plant.observations : 'U.S.A.'}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -98,10 +97,27 @@ function GardenItem({ plant }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Method:</Typography>
-            <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron
-              and set aside for 10 minutes.
+            <Typography paragraph>Specifications</Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Average Height:{' '}
+              {plant.main_species.specifications.average_height.cm
+                ? plant.main_species.specifications.average_height.cm + ' cm'
+                : 'Unknown'}{' '}
+              <br />
+              Growth Form:{' '}
+              {plant.main_species.specifications.growth_form
+                ? plant.main_species.specifications.growth_form
+                : 'Single Crown'}
+              <br />
+              Growth Rate:{' '}
+              {plant.main_species.specifications.growth_rate
+                ? plant.main_species.specifications.growth_rate
+                : 'Rapid'}
+              <br />
+              Toxicity:{' '}
+              {plant.main_species.specifications.toxicity
+                ? plant.main_species.specifications.toxicity
+                : 'None'}
             </Typography>
             <Typography paragraph>
               Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet

@@ -1,12 +1,18 @@
+.container {
+  text-align: left;
+  padding: 5px;
+}
+
 .footer-clean {
-  margin-top: calc(5% + 60px);
+  margin-top: calc(5% + 30px);
   z-index: -1;
   bottom: 0;
-  padding: 5px 0;
-  max-height: 64px;
+  padding: 5px;
+  max-height: 200px;
   background-color: #fff;
   color: #4b4c4d;
-  position: fixed;
+  position: relative;
+  text-align: center;
   width: 100%;
 }
 
