@@ -26,6 +26,7 @@ function GardenDropdown() {
 
   useEffect(() => {
     getGardenDropdown();
+    getPlantsBySection();
   }, []);
 
   const getGardenDropdown = () => {
@@ -118,7 +119,7 @@ function GardenDropdown() {
         </Select>
       )}
       {/* Start of Garden Data Processing */}
-      {gardenList || gardenList.length === 0 ? (
+      {gardenList.length === 0 || gardenList === undefined ? (
         <Typography>
           Add plants to your Garden and they'll appear below!
         </Typography>

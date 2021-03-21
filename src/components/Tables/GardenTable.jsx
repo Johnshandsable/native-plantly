@@ -14,8 +14,9 @@ function GardenTable() {
 
   return (
     <Grid container spacing={3}>
+      <h1>HELLOOOOOOOOOO WE MADE IT</h1>
       {gardenList.map((plant, index) => {
-        <GardenItem plant={plant} />;
+        return <GardenItem plant={plant} />;
       })}
     </Grid>
   );
