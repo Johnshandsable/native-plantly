@@ -91,7 +91,10 @@ function GardenDropdown() {
       if (result.value) {
         dispatch({
           type: 'EDIT_DROPDOWN_SECTION',
-          payload: result.value,
+          payload: {
+            name: result.value,
+            id: dropdownSelection,
+          },
         });
       }
     });

@@ -65,11 +65,10 @@ function* getPlantsBySection(action) {
   try {
     console.log('action', action);
     const response = yield axios.get(`/api/section/${action.payload.data}`);
-    console.log('response', response.data);
-    // if (response.data === undefined || response.data.length <= 0) {
-    //   console.log('invalid response');
-    //   return;
-    // }
+    if (response.data === undefined || response.data.length < 1) {
+      console.log('invalid response');
+      return;
+    }
     yield put({
       type: 'SET_PLANTS_BY_SECTION',
       payload: response.data,

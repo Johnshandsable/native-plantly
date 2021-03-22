@@ -16,7 +16,7 @@ function AboutPage() {
       marginRight: 20,
     },
     paper: {
-      background: 'radial-gradient(circle, #83a668, white)',
+      // background: 'radial-gradient(circle, #83a668, white)',
       height: '100%',
       padding: theme.spacing(2),
       textAlign: 'center',
@@ -28,24 +28,59 @@ function AboutPage() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Typography variant="h5">About</Typography>
-        </Grid>
+        </Grid> */}
         {/* First Image */}
-        <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
+        <Grid item xs={4} sm={6} md={4} lg={4} xl={4}>
           <Paper className={classes.paper}>
+            <Typography
+              variant="h4"
+              style={{
+                marginBottom: 20,
+                paddingBottom: 5,
+                borderBottom: '2px solid grey',
+              }}
+            >
+              What are native plants?
+            </Typography>
             <img
               className="about-image"
               src={process.env.PUBLIC_URL + '/pic1.JPG'}
               alt="Bee on Flower"
             ></img>
+
+            <Typography
+              style={{
+                textAlign: 'left',
+                paddingTop: 5,
+                marginTop: 20,
+                borderTop: '2px solid grey',
+              }}
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
+            </Typography>
           </Paper>
         </Grid>
         {/* Question #1 */}
-        <Grid item xs={6}>
+        <Grid item xs={8}>
           <Paper className={classes.paper}>
             <Typography variant="h4">What are native plants?</Typography>
-            <Typography>
+            <Typography
+              style={{
+                textAlign: 'left',
+                marginTop: 20,
+              }}
+            >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -63,7 +98,12 @@ function AboutPage() {
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             <Typography variant="h4">Why choose native plants?</Typography>
-            <Typography>
+            <Typography
+              style={{
+                textAlign: 'left',
+                marginTop: 20,
+              }}
+            >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
