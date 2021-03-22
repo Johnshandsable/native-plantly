@@ -124,6 +124,28 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     .catch((err) => {
       console.error('POST - plant an error occurred', err);
     });
-});
+}); // end of POST
+
+router.delete('/', rejectUnauthenticated, (req, res) => {
+  const userId = req.user.id;
+  const plantId = req.body.id;
+  const sectionId = req.body.sectionId;
+  const sqlQuery = `DELETE 
+  FROM "plants"
+  WHERE "user_id" = $1 AND "id" = $2 AND "section_id" = $3;`;
+
+  console.log('SERVER - DELETE - deleting from plants');
+
+  pool
+    .query(sqlQuery, [userId, plantId, sectionId])
+    .then((dbRes) => {
+      console.log('SERVER - DELETE - deleting from plants success!');
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error('SERVER - DELETE - an error occurred', err);
+      res.sendStatus(500);
+    });
+}); // end of DELETE
 
 module.exports = router;
