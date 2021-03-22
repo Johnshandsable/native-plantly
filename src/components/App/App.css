@@ -19,7 +19,9 @@ Container
 -------------------------------------------------------------------------------- */
 
 .container {
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* --------------------------------------------------------------------------------
@@ -145,4 +147,12 @@ ul {
   width: 100%;
   opacity: 0.8;
   text-align: center;
+}
+
+.spacing {
+  margin-top: 100px;
+}
+
+.about-image {
+  border-radius: 5px;
 }
