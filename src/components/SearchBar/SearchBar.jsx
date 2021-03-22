@@ -81,7 +81,6 @@ function SearchBar() {
       >
         Search
       </Button>
-      {/* <SendIcon className={classes.sendIcon} onClick={handleSearch} /> */}
     </div>
   );
 }
