@@ -126,6 +126,11 @@ ul {
   list-style-type: none;
 }
 
+.search-container {
+  margin-top: 120px;
+  display: flex;
+}
+
 .card-image {
   position: relative;
   max-height: 250px;

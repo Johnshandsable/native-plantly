@@ -8,10 +8,15 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', async (req, res) => {
-  const searchToken = 'Sunflower'; // Will be coming from client-side
-  const searchState = req.user.location; // Will be coming from req.user.location
-
   try {
+    const searchToken = 'Sunflower'; // Will be coming from client-side
+    const searchState = req.user.location; // Will be coming from req.user.location
+
+    if (searchState === undefined) {
+      // assign a variable if, for whatever reason,
+      // the user has not set a location, we can still get results back
+      searchState = 'MO';
+    }
     const listOfPlants = await axios.post(
       'https://explorer.natureserve.org/api/data/speciesSearch',
       {
