@@ -10,6 +10,8 @@ import GardenTable from '../Tables/GardenTable';
 
 // MATERIAL UI
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
@@ -99,12 +101,15 @@ function GardenDropdown() {
 
   return (
     <div>
-      <Button onClick={handleDeleteCurrentSelection}>Delete</Button>
-      <Button onClick={renameCurrentSelection}>Edit</Button>
+      {/* Dropdown List for Garden Section */}
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
           defaultValue={dropdownSelection}
           onChange={handleSelectionChange}
+          style={{
+            marginLeft: '5px',
+            marginRight: '5px',
+          }}
         >
           {dropdownList.map((dropdownItem, index) => (
             <MenuItem value={dropdownItem.id} key={index}>
@@ -119,10 +124,28 @@ function GardenDropdown() {
           </MenuItem>
         </Select>
       )}
+      {/* Edit Button for Garden Section */}
+      <Button
+        color="primary"
+        endIcon={<EditIcon />}
+        onClick={renameCurrentSelection}
+      >
+        Edit
+      </Button>
+      {/* Delete Button for Garden Section */}
+      <Button
+        style={{
+          color: '#e74c3c',
+        }}
+        endIcon={<DeleteIcon />}
+        onClick={handleDeleteCurrentSelection}
+      >
+        Delete
+      </Button>
       {/* Start of Garden Data Processing */}
       {gardenList.length === 0 || gardenList === undefined ? (
         <Typography>
-          Add plants to your Garden and they'll appear below!
+          Add plants to your Garden and they will appear below!
         </Typography>
       ) : (
         <GardenTable gardenList={gardenList} />
