@@ -14,34 +14,26 @@ function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
   const useStyles = makeStyles((theme) => ({
     search: {
+      paddingLeft: 10,
+      marginLeft: 20,
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
       backgroundColor: fade(theme.palette.secondary.main, 0.5),
       '&:hover': {
         backgroundColor: fade(theme.palette.secondary.main, 0.75),
       },
-      // marginLeft: 0,
       width: '100%',
+      height: '100%',
       [theme.breakpoints.up('lg')]: {
         paddingLeft: theme.spacing(2),
         marginLeft: theme.spacing(3),
-        maxWidth: 250,
       },
-    },
-    searchIcon: {
-      padding: theme.spacing(0.5, 21),
-      height: '90%',
-      display: 'inline-block',
-      position: 'absolute',
     },
     sendIcon: {
       display: 'inline-block',
-      marginLeft: 250,
+      marginLeft: 275,
       top: 0,
       zIndex: '-1',
-    },
-    input: {
-      width: '100%',
     },
   }));
   const classes = useStyles();
@@ -64,26 +56,29 @@ function SearchBar() {
 
   return (
     <div className="search-container">
-      <div className={classes.search}>
-        <Grid>
-          <Grid item xs={3}>
-            {/* <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div> */}
+      <Grid>
+        <Grid item xs={12}>
+          <div className={classes.search}>
             <InputBase
               placeholder="search by species..."
-              // classes={{
-              //   root: classes.inputRoot,
-              //   input: classes.inputInput,
-              // }}
               inputProps={{ 'aria-label': 'search' }}
               value={searchValue}
               onChange={handleChangeSearchValue}
             />
-          </Grid>
+          </div>
         </Grid>
-      </div>
-      <Button color="primary" endIcon={<SendIcon />} onClick={handleSearch}>
+      </Grid>
+
+      <Button
+        color="primary"
+        variant="outlined"
+        endIcon={<SendIcon />}
+        onClick={handleSearch}
+        style={{
+          marginLeft: 50,
+          height: '100%',
+        }}
+      >
         Search
       </Button>
       {/* <SendIcon className={classes.sendIcon} onClick={handleSearch} /> */}

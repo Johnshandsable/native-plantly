@@ -129,6 +129,7 @@ ul {
 }
 
 .search-container {
+  align-items: center;
   margin-top: 120px;
   display: flex;
 }
