@@ -9,18 +9,19 @@ const {
 
 router.get('/', async (req, res) => {
   try {
-    const searchToken = 'Sunflower'; // Will be coming from client-side
-    let searchState = '';
+    const searchToken = 'Sunflower'; // default search value
+    let searchState = 'MO';
 
-    if (req.user.location === undefined) {
-      /*
-        if user is not logged in but wants to view the home page, the page 
-        will display plants from the midwest.
-      */
-      searchState = 'MO';
-    } else {
-      searchState = req.user.location;
-    }
+    // try {
+    //   /*
+    //     if user is not logged in but wants to view the home page, the page
+    //     will display plants from the midwest.
+    //   */
+    //   searchState = req.user.location;
+    // } catch (err) {
+    //   console.log('defaulting searchState to MO');
+    //   searchState = 'MO';
+    // }
 
     console.log('SERVER - GET - get plants by location', searchState);
 

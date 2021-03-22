@@ -3,10 +3,11 @@
 }
 
 .footer-clean {
+  min-height: 100vh;
   margin-top: calc(5% + 30px);
   z-index: -1;
   bottom: 0;
-  max-height: 250px;
+  max-height: 200px;
   background-color: #fff;
   margin-left: 20px;
   color: #4b4c4d;

@@ -47,7 +47,9 @@ function Footer() {
     left: {
       width: '100%',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'left',
+      margin: 0,
+      padding: 0,
     },
     center: {
       width: '100%',
@@ -62,15 +64,20 @@ function Footer() {
 
   return (
     <div className="footer-clean">
-      <BottomNavigation showLabels className={classes.left}>
-        <BottomNavigationAction label="GitHub" icon={<GitHubIcon />} />
-        {/* <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
-        <Typography variant="body2" color="textSecondary" component="p">
-          John Shands © 2021
-        </Typography>
-      </BottomNavigation>
-      <BottomNavigation showLabels className={classes.center}>
+      {/* <BottomNavigation showLabels className={classes.left}> */}
+      <BottomNavigationAction
+        style={{
+          margin: 0,
+          padding: 0,
+        }}
+        label="GitHub"
+        icon={<GitHubIcon />}
+      />
+      <Typography variant="body2" color="textSecondary" component="p">
+        John Shands © 2021
+      </Typography>
+      {/* </BottomNavigation> */}
+      {/* <BottomNavigation showLabels className={classes.center}>
         <Typography variant="body2" color="textSecondary" component="p">
           Built using NatureServe Data. 2021. NatureServe, Arlington, Virginia.
           Source:{' '}
@@ -84,7 +91,7 @@ function Footer() {
           Built using Trefle Data. 2021. Trefle.io/ Source:{' '}
           <a href="https://trefle.io/">trefle.io/</a>
         </Typography>
-      </BottomNavigation>
+      </BottomNavigation> */}
     </div>
   );
 }

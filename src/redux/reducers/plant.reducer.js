@@ -25,6 +25,8 @@ const plantsBySectionReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_PLANTS_BY_SECTION':
       return action.payload;
+    case 'RESET_PLANTS':
+      return action.payload;
     default:
       return state;
   }

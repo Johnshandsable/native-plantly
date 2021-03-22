@@ -54,7 +54,6 @@ function GardenDropdown() {
     console.log('CURRENT - ', dropdownSelection);
     console.log('INCOMING VALUE -', evt.target.value);
     setDropdownSelection(evt.target.value);
-    setDropdownSelection(evt.target.value);
     console.log('UPDATED - ', dropdownSelection);
     getPlantsBySection();
   };
@@ -108,7 +107,9 @@ function GardenDropdown() {
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
           defaultValue={dropdownSelection}
-          onChange={handleSelectionChange}
+          onChange={(evt) => {
+            handleSelectionChange(evt);
+          }}
           style={{
             marginLeft: '5px',
             marginRight: '5px',
