@@ -21,8 +21,11 @@ const singlePlantReducer = (state = {}, action) => {
 };
 
 const plantsBySectionReducer = (state = [], action) => {
+  console.log('payload', action.payload);
   switch (action.type) {
     case 'SET_PLANTS_BY_SECTION':
+      return action.payload;
+    case 'RESET_PLANTS':
       return action.payload;
     default:
       return state;

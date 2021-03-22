@@ -8,10 +8,23 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', async (req, res) => {
-  const searchToken = 'Sunflower'; // Will be coming from client-side
-  const searchState = req.user.location; // Will be coming from req.user.location
-
   try {
+    const searchToken = 'Sunflower'; // default search value
+    let searchState = 'MO';
+
+    // try {
+    //   /*
+    //     if user is not logged in but wants to view the home page, the page
+    //     will display plants from the midwest.
+    //   */
+    //   searchState = req.user.location;
+    // } catch (err) {
+    //   console.log('defaulting searchState to MO');
+    //   searchState = 'MO';
+    // }
+
+    console.log('SERVER - GET - get plants by location', searchState);
+
     const listOfPlants = await axios.post(
       'https://explorer.natureserve.org/api/data/speciesSearch',
       {
@@ -54,10 +67,8 @@ router.get('/', async (req, res) => {
         ],
       } // above info sent to NatureServe API
     ); // end of POST request
-    // console.log(listOfPlants.data.results);
     const bundledData = await bundleData(listOfPlants.data.results);
-    // console.log(bundledData);
-    // console.table(bundledData.image.id);
+    console.log('SERVER - GET - getting plants by location success!');
     res.send(bundledData);
   } catch (err) {
     console.error('an error occurred getting info from NatureServe', err);
@@ -67,7 +78,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:slug', (req, res) => {
   const trefleSlug = req.params.slug;
-  console.log('GET - plant by slug');
+
+  console.log('SERVER - GET - getting plant by slug');
+
   axios
     .get(`http://trefle.io/api/v1/plants/${trefleSlug}`, {
       params: {
@@ -75,11 +88,11 @@ router.get('/:slug', (req, res) => {
       },
     })
     .then((dbRes) => {
-      // console.log(dbRes.data.data);
+      console.log('SERVER - GET - getting plant by slug success!');
       res.send(dbRes.data.data);
     })
     .catch((err) => {
-      console.error('GET DETAILS - an error occurred', err);
+      console.error('SERVER - GET - an error occurred', err);
       res.sendStatus(500);
     });
 }); // end of GET details
@@ -89,23 +102,51 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   Incoming -> 
     req.user.id: Integer
     trefle_slug: String
-    natureserve_id: String
     section_id: Integer
   */
   const userId = req.user.id;
   const trefleSlug = req.body.trefle_slug;
   const sectionId = req.body.section_id;
+  const sqlQuery = `INSERT INTO "plants" 
+  ("user_id", "trefle_slug", "section_id") 
+  VALUES ($1, $2, $3);`;
 
-  const sqlQuery = `INSERT INTO "plants" ("user_id", "trefle_slug", "section_id") VALUES ($1, $2, $3);`;
+  console.log('SERVER - POST - inserting plant into database');
+
   pool
     .query(sqlQuery, [userId, trefleSlug, sectionId])
     .then((dbRes) => {
-      console.log('POST - plant', dbRes);
+      console.log(
+        'SERVER - POST - plant inserted into database success!',
+        dbRes
+      );
       res.sendStatus(201); // CREATED
     })
     .catch((err) => {
       console.error('POST - plant an error occurred', err);
     });
-});
+}); // end of POST
+
+router.delete('/', rejectUnauthenticated, (req, res) => {
+  const userId = req.user.id;
+  const plantId = req.body.id;
+  const sectionId = req.body.sectionId;
+  const sqlQuery = `DELETE 
+  FROM "plants"
+  WHERE "user_id" = $1 AND "id" = $2 AND "section_id" = $3;`;
+
+  console.log('SERVER - DELETE - deleting from plants');
+
+  pool
+    .query(sqlQuery, [userId, plantId, sectionId])
+    .then((dbRes) => {
+      console.log('SERVER - DELETE - deleting from plants success!');
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error('SERVER - DELETE - an error occurred', err);
+      res.sendStatus(500);
+    });
+}); // end of DELETE
 
 module.exports = router;

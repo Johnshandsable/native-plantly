@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // MATERIAL UI
-import SearchIcon from '@material-ui/icons/Search';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 import SendIcon from '@material-ui/icons/Send';
 
 function SearchBar() {
@@ -20,13 +20,12 @@ function SearchBar() {
       '&:hover': {
         backgroundColor: fade(theme.palette.secondary.main, 0.75),
       },
-      marginLeft: 0,
-      width: '25%',
+      // marginLeft: 0,
+      width: '100%',
       [theme.breakpoints.up('lg')]: {
         paddingLeft: theme.spacing(2),
         marginLeft: theme.spacing(3),
-        marginTop: 120,
-        maxWidth: 200,
+        maxWidth: 250,
       },
     },
     searchIcon: {
@@ -40,6 +39,9 @@ function SearchBar() {
       marginLeft: 250,
       top: 0,
       zIndex: '-1',
+    },
+    input: {
+      width: '100%',
     },
   }));
   const classes = useStyles();
@@ -61,19 +63,19 @@ function SearchBar() {
   };
 
   return (
-    <>
+    <div className="search-container">
       <div className={classes.search}>
         <Grid>
           <Grid item xs={3}>
-            <div className={classes.searchIcon}>
+            {/* <div className={classes.searchIcon}>
               <SearchIcon />
-            </div>
+            </div> */}
             <InputBase
               placeholder="search by species..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
+              // classes={{
+              //   root: classes.inputRoot,
+              //   input: classes.inputInput,
+              // }}
               inputProps={{ 'aria-label': 'search' }}
               value={searchValue}
               onChange={handleChangeSearchValue}
@@ -81,8 +83,11 @@ function SearchBar() {
           </Grid>
         </Grid>
       </div>
-      <SendIcon className={classes.sendIcon} onClick={handleSearch} />
-    </>
+      <Button color="primary" endIcon={<SendIcon />} onClick={handleSearch}>
+        Search
+      </Button>
+      {/* <SendIcon className={classes.sendIcon} onClick={handleSearch} /> */}
+    </div>
   );
 }
 

@@ -21,7 +21,6 @@ CREATE TABLE "plants" (
   "id" SERIAL PRIMARY KEY, 
   "user_id" INT REFERENCES "user",
   "trefle_slug" VARCHAR(1000),
-  "natureserve_id" INT NOT NULL,
   "section_id" INT REFERENCES "garden_sections"
 );
 

@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import DetailViewDropdown from '../Dropdown/DetailViewDropdown';
 import NavigateHomeButton from '../Buttons/NavigateHomeButton';
 import bundleCarouselData from '../../helpers/BundleCarouselData';
+// CUSTOM COMPONENTS
+import Carousel from './Carousel';
 import Dropdown from '../Dropdown/Dropdown';
 
 // MATERIAL UI
@@ -70,7 +72,6 @@ function DetailView() {
                 <img
                   className="card-image"
                   name={detailedPlant.slug}
-                  // onClick={handleClickGoToDetailView}
                   src={detailedPlant.image_url}
                   alt={detailedPlant.common_name}
                 />
@@ -79,8 +80,7 @@ function DetailView() {
                 <img
                   className="card-image"
                   name={detailedPlant.slug}
-                  // onClick={handleClickGoToDetailView}
-                  src={process.env.PUBLIC_URL + '/sumac.jpg'}
+                  src={process.env.PUBLIC_URL + '/image_not_found.jpg'}
                   alt={detailedPlant.common_name}
                 />
               )}
@@ -112,7 +112,9 @@ function DetailView() {
 
         {/* Image Carousel */}
         <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
-          <div className="carousel">hello</div>
+          <Card>
+            <Carousel bundledData={bundledData} />
+          </Card>
         </Grid>
 
         {/* Details about Plant */}
@@ -124,14 +126,6 @@ function DetailView() {
                 Average height:{' '}
                 {detailedPlant.main_species.specifications.average_height.cm
                   ? detailedPlant.main_species.specifications.average_height.cm
-                  : 'unknown'}{' '}
-                cm
-              </Typography>
-              <Typography gutterBottom component="p">
-                {/* detailedPlant.main_species.specifications.maximum_height.cm -> cm */}
-                Max height:{' '}
-                {detailedPlant.main_species.specifications.maximum_height.cm
-                  ? detailedPlant.main_species.specifications.maximum_height.cm
                   : 'unknown'}{' '}
                 cm
               </Typography>

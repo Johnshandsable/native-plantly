@@ -22,7 +22,7 @@ const searchPlants = function* (action) {
     // gets data from server
     console.log('payload', action.payload);
     const response = yield axios.get(`/api/search/${action.payload}`);
-    // console.log('SAGAS - response', response.data);
+    console.log('SAGAS - response', response.data);
 
     yield put({
       type: 'SET_PLANTS',
@@ -63,8 +63,20 @@ function* addPlant(action) {
 
 function* getPlantsBySection(action) {
   try {
-    const response = yield axios.get(`/api/section/${action.payload}`);
-    console.log('response', response.data);
+    console.log('action', action);
+    const response = yield axios.get(`/api/section/${action.payload.data}`);
+    if (response.data === undefined || response.data.length < 1) {
+      yield put({
+        type: 'RESET_PLANTS',
+        payload: [],
+      });
+      return;
+    }
+    yield put({
+      type: 'SET_PLANTS_BY_SECTION',
+      payload: response.data,
+    });
+    action.payload.onComplete();
   } catch (err) {
     console.error('CLIENT - get plant by section an error occurred', err);
   }

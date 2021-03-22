@@ -120,16 +120,17 @@ function Nav() {
             <MenuItem component={Link} to="/my-gardens" onClick={handleClose}>
               My Gardens
             </MenuItem>
-            <MenuItem component={Link} to={loginLinkData.path}>
+            {/* <MenuItem component={Link} to={loginLinkData.path}>
               {loginLinkData.text}
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem
-              component={Button}
+              component={Link}
+              to="/login"
               onClick={() => dispatch({ type: 'LOGOUT' })}
             >
               Logout
             </MenuItem>{' '}
-            {/* <LogOutButton className="navLink" /> */}
+            {/* <LogOutButton /> */}
           </Menu>
         </Toolbar>
       </AppBar>

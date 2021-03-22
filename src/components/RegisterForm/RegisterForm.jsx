@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// MATERIAL UI
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,11 +27,11 @@ function RegisterForm() {
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+      <Typography>Register User</Typography>
       {errors.registrationMessage && (
-        <h3 className="alert" role="alert">
+        <Typography className="alert" role="alert">
           {errors.registrationMessage}
-        </h3>
+        </Typography>
       )}
       <div>
         <label htmlFor="username">
@@ -66,7 +70,15 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <Button
+          color="primary"
+          variant="outlined"
+          value="Register"
+          name="submit"
+        >
+          Submit
+        </Button>
+        {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
       </div>
     </form>
   );

@@ -8,10 +8,10 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/:token', async (req, res) => {
-  const searchToken = req.params.token; // Will be coming from client-side
-  const searchState = req.user.location; // Will be coming from req.user.location
-  console.log('searchToken:', searchToken);
   try {
+    const searchToken = req.params.token; // Will be coming from client-side
+    const searchState = req.user.location; // Will be coming from req.user.location
+    console.log('searchToken:', searchToken);
     const listOfPlants = await axios.post(
       'https://explorer.natureserve.org/api/data/speciesSearch',
       {

@@ -40,7 +40,7 @@ function* deleteDropdown(action) {
 function* editDropdown(action) {
   try {
     console.log('payload', action.payload);
-    yield axios.put(`/garden/dropdown/${action.payload}`);
+    yield axios.put(`/garden/dropdown`, action.payload);
     yield put({
       type: 'GET_DROPDOWN',
     });
