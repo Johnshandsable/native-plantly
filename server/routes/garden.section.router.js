@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
             },
           }
         );
-        console.log('data', data.data.data);
+        // console.log('data', data.data.data);
         newArrayOfData.push({
           id: item.id,
           plant: data.data.data,

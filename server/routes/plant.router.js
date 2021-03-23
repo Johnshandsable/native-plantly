@@ -127,13 +127,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     });
 }); // end of POST
 
-router.delete('/', rejectUnauthenticated, (req, res) => {
+router.delete('/:id/:sectionId', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
-  const plantId = req.body.id;
-  const sectionId = req.body.sectionId;
+  const plantId = req.params.id;
+  const sectionId = req.params.sectionId;
+  console.log('req.params', req.params);
   const sqlQuery = `DELETE 
   FROM "plants"
-  WHERE "user_id" = $1 AND "id" = $2 AND "section_id" = $3;`;
+  WHERE "user_id" = $1 AND "id" = $2 AND "section_id" = $3 RETURNING "section_id";`;
 
   console.log('SERVER - DELETE - deleting from plants');
 
@@ -141,7 +142,8 @@ router.delete('/', rejectUnauthenticated, (req, res) => {
     .query(sqlQuery, [userId, plantId, sectionId])
     .then((dbRes) => {
       console.log('SERVER - DELETE - deleting from plants success!');
-      res.sendStatus(200);
+      console.log('dbRes', dbRes.rows);
+      res.send(dbRes.rows);
     })
     .catch((err) => {
       console.error('SERVER - DELETE - an error occurred', err);

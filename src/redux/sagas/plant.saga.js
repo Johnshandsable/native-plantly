@@ -51,11 +51,7 @@ function* getSinglePlantDetailView(action) {
 
 function* addPlant(action) {
   try {
-    // console.log(action.payload);
     yield axios.post(`/api/plant-details`, action.payload);
-    yield put({
-      type: 'GET_PLANTS',
-    });
   } catch (err) {
     console.error('CLIENT - post an error occurred', err);
   }
@@ -83,6 +79,27 @@ function* getPlantsBySection(action) {
   }
 }
 
+function* deletePlant(action) {
+  try {
+    console.log('payload', action.payload);
+    const response = yield axios.delete(
+      `/api/plant-details/${action.payload.id}/${action.payload.sectionId}`
+    ); // returns section id of deleted row, so we can update the garden table
+    console.log('data', response.data);
+    console.log('response', response);
+    yield put({
+      type: 'GET_PLANTS_BY_SECTION',
+      payload: {
+        data: response.data[0].section_id,
+      },
+    });
+    console.log('something is happening');
+    // action.payload.onComplete();
+  } catch (err) {
+    console.error('CLIENT - delete plant by section an error occurred', err);
+  }
+}
+
 function* plantSaga() {
   // listen for this and do function
   yield takeLatest('GET_PLANTS', getPlants);
@@ -90,6 +107,7 @@ function* plantSaga() {
   yield takeLatest('ADD_PLANT', addPlant);
   yield takeLatest('SEARCH_PLANTS', searchPlants);
   yield takeLatest('GET_PLANTS_BY_SECTION', getPlantsBySection);
+  yield takeLatest('DELETE_PLANT', deletePlant);
 } // end plantSaga
 
 export default plantSaga;

@@ -151,7 +151,7 @@ function AboutPage() {
         </Grid>
         {/* End of Left Section */}
         {/* Right Section */}
-        <Grid xs={12} sm={8} md={9} lg={9} xl={9}>
+        <Grid item xs={12} sm={8} md={9} lg={9} xl={9}>
           <Paper className={classes.paper}>
             <Typography
               color="primary"

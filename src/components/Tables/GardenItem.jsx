@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+// MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
@@ -12,13 +15,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function GardenItem({ plant, dropdownSelection }) {
+  const dispatch = useDispatch();
   const useStyles = makeStyles((theme) => ({
     root: {
       marginTop: 20,
@@ -40,18 +43,27 @@ function GardenItem({ plant, dropdownSelection }) {
     },
   }));
 
-  console.log('dropdownSelection is', dropdownSelection);
-  console.log('plant', plant);
-
   // Event handlers
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
+
   const handleDeletePlant = (evt) => {
-    console.log('evt', evt);
-    console.log('value', evt.target.value);
-    console.log('name', evt.target.name);
+    console.log('currentTarget', evt.currentTarget.value);
+    dispatch({
+      type: 'DELETE_PLANT',
+      payload: {
+        id: plant.id,
+        sectionId: dropdownSelection,
+        // onComplete: () => {
+        //   refreshPage();
+        // },
+      },
+    });
   };
 
   // Local state
@@ -66,7 +78,6 @@ function GardenItem({ plant, dropdownSelection }) {
             color: '#e74c3c',
           }}
           endIcon={<DeleteIcon />}
-          name={plant.id}
           value={plant.id}
           onClick={handleDeletePlant}
         >

@@ -37,7 +37,7 @@ function ProtectedRoute(props) {
   } else {
     // if they are not logged in, check the loginMode on Redux State
     // if the mode is 'login', show the LoginPage
-    ComponentToShow = AboutPage;
+    ComponentToShow = LoginPage;
   }
 
   // redirect a logged in user if an authRedirect prop has been provided

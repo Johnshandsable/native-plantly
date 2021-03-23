@@ -20,7 +20,7 @@ function GardenDropdown() {
   const dispatch = useDispatch();
   const dropdownList = useSelector((store) => store.garden);
   const [dropdownSelection, setDropdownSelection] = useState(
-    dropdownList[0].id
+    dropdownList.length ? dropdownList[0].id : null
   );
   const gardenList = useSelector(
     (store) => store.plants.plantsBySectionReducer
@@ -28,8 +28,11 @@ function GardenDropdown() {
 
   useEffect(() => {
     getGardenDropdown();
-    getPlantsBySection();
   }, []);
+
+  useEffect(() => {
+    getPlantsBySection();
+  }, [dropdownSelection]);
 
   const getGardenDropdown = () => {
     dispatch({
@@ -39,6 +42,12 @@ function GardenDropdown() {
 
   const getPlantsBySection = () => {
     console.log('dropdownSelection', dropdownSelection);
+
+    if (dropdownSelection === null) {
+      console.log('dropdownSelection is null');
+      return;
+    }
+
     dispatch({
       type: 'GET_PLANTS_BY_SECTION',
       payload: {
@@ -107,8 +116,8 @@ function GardenDropdown() {
       {/* Dropdown List for Garden Section */}
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
-          // defaultValue={dropdownSelection}
-          // value={dropdownSelection}
+          defaultValue={dropdownSelection}
+          value={dropdownSelection}
           onChange={(evt) => {
             handleSelectionChange(evt);
           }}
