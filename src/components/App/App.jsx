@@ -55,10 +55,10 @@ function App() {
             <Redirect exact from="/" to="/home" />
 
             {/* Home Route */}
-            <Route path="/home" exact>
+            <ProtectedRoute path="/home" exact>
               <SearchBar />
               <PlantList />
-            </Route>
+            </ProtectedRoute>
 
             {/* About Route */}
             <Route path="/about">
@@ -66,9 +66,9 @@ function App() {
             </Route>
 
             {/* Details View for Single Plants */}
-            <Route path="/details/">
+            <ProtectedRoute path="/details/">
               <DetailView />
-            </Route>
+            </ProtectedRoute>
 
             {/* My Gardens Route */}
             <ProtectedRoute path="/my-gardens">
@@ -118,17 +118,6 @@ function App() {
               authRedirect="/user"
             >
               <RegisterPage />
-            </ProtectedRoute>
-
-            <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
-              exact
-              path="/home"
-              authRedirect="/user"
-            >
-              <LandingPage />
             </ProtectedRoute>
 
             {/* If none of the other routes matched, we will show a 404. */}

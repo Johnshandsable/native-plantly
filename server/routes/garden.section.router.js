@@ -15,7 +15,7 @@ router.get('/:id', async (req, res) => {
     console.log('selection', selectionId);
 
     const sqlQuery = `
-        SELECT "trefle_slug" 
+        SELECT "plants".id, "trefle_slug" 
         FROM "garden_sections" 
         JOIN "plants" ON "plants".section_id = "garden_sections".id
         WHERE "garden_sections".user_id = $1 AND "garden_sections".id = $2`;
@@ -30,6 +30,7 @@ router.get('/:id', async (req, res) => {
     for (const item of dbRes.rows) {
       // if dbResponse has a trefle_slug go ahead and make an api call for
       // each slug
+      console.log(item);
       if (item.trefle_slug) {
         const data = await axios.get(
           `http://trefle.io/api/v1/plants/${item.trefle_slug}`,
@@ -39,7 +40,11 @@ router.get('/:id', async (req, res) => {
             },
           }
         );
-        newArrayOfData.push(data.data.data); // data.data -> gets back the data without headers
+        console.log('data', data.data.data);
+        newArrayOfData.push({
+          id: item.id,
+          plant: data.data.data,
+        }); // data.data -> gets back the data without headers
       }
     } // end for loop
     res.send(newArrayOfData);

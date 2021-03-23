@@ -65,6 +65,7 @@ function* getPlantsBySection(action) {
   try {
     console.log('action', action);
     const response = yield axios.get(`/api/section/${action.payload.data}`);
+    console.log('getting plants by section', response.data);
     if (response.data === undefined || response.data.length < 1) {
       yield put({
         type: 'RESET_PLANTS',

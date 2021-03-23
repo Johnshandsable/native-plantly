@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -17,7 +18,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-function GardenItem({ plant }) {
+function GardenItem({ plant, dropdownSelection }) {
   const useStyles = makeStyles((theme) => ({
     root: {
       marginTop: 20,
@@ -39,9 +40,18 @@ function GardenItem({ plant }) {
     },
   }));
 
+  console.log('dropdownSelection is', dropdownSelection);
+  console.log('plant', plant);
+
   // Event handlers
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleDeletePlant = (evt) => {
+    console.log('evt', evt);
+    console.log('value', evt.target.value);
+    console.log('name', evt.target.name);
   };
 
   // Local state
@@ -51,33 +61,36 @@ function GardenItem({ plant }) {
   return (
     <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
       <Card className={classes.root}>
+        <Button
+          style={{
+            color: '#e74c3c',
+          }}
+          endIcon={<DeleteIcon />}
+          name={plant.id}
+          value={plant.id}
+          onClick={handleDeletePlant}
+        >
+          Delete
+        </Button>
         <CardHeader
-          action={
-            <IconButton aria-label="delete">
-              <DeleteIcon
-                style={{
-                  color: '#e74c3c',
-                }}
-              />
-            </IconButton>
-          }
-          // plant.main_species.common_name
-          title={plant.main_species.common_name}
-          subheader={plant.family_common_name}
+          title={plant.plant.main_species.common_name}
+          subheader={plant.plant.family_common_name}
         />
+
         <CardMedia
           className={classes.media}
           image={
-            plant.image_url
-              ? plant.image_url
+            plant.plant.image_url
+              ? plant.plant.image_url
               : process.env.PUBLIC_URL + '/image_not_found.jpg'
           }
-          title={plant.main_species.common_name}
+          title={plant.plant.main_species.common_name}
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {plant.main_species.scientific_name} <br />
-            Found: {plant.observations ? plant.observations : 'U.S.A.'}
+            {plant.plant.main_species.scientific_name} <br />
+            Found:{' '}
+            {plant.plant.observations ? plant.plant.observations : 'U.S.A.'}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -103,23 +116,24 @@ function GardenItem({ plant }) {
             <Typography paragraph>Specifications</Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               Average Height:{' '}
-              {plant.main_species.specifications.average_height.cm
-                ? plant.main_species.specifications.average_height.cm + ' cm'
+              {plant.plant.main_species.specifications.average_height.cm
+                ? plant.plant.main_species.specifications.average_height.cm +
+                  ' cm'
                 : 'Unknown'}{' '}
               <br />
               Growth Form:{' '}
-              {plant.main_species.specifications.growth_form
-                ? plant.main_species.specifications.growth_form
+              {plant.plant.main_species.specifications.growth_form
+                ? plant.plant.main_species.specifications.growth_form
                 : 'Single Crown'}
               <br />
               Growth Rate:{' '}
-              {plant.main_species.specifications.growth_rate
-                ? plant.main_species.specifications.growth_rate
+              {plant.plant.main_species.specifications.growth_rate
+                ? plant.plant.main_species.specifications.growth_rate
                 : 'Rapid'}
               <br />
               Toxicity:{' '}
-              {plant.main_species.specifications.toxicity
-                ? plant.main_species.specifications.toxicity
+              {plant.plant.main_species.specifications.toxicity
+                ? plant.plant.main_species.specifications.toxicity
                 : 'None'}
             </Typography>
           </CardContent>

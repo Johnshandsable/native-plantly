@@ -54,6 +54,7 @@ function GardenDropdown() {
     console.log('CURRENT - ', dropdownSelection);
     console.log('INCOMING VALUE -', evt.target.value);
     setDropdownSelection(evt.target.value);
+    setDropdownSelection(evt.target.value);
     console.log('UPDATED - ', dropdownSelection);
     getPlantsBySection();
   };
@@ -106,7 +107,8 @@ function GardenDropdown() {
       {/* Dropdown List for Garden Section */}
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
-          defaultValue={dropdownSelection}
+          // defaultValue={dropdownSelection}
+          // value={dropdownSelection}
           onChange={(evt) => {
             handleSelectionChange(evt);
           }}
@@ -152,7 +154,10 @@ function GardenDropdown() {
           Add plants to your Garden and they will appear below!
         </Typography>
       ) : (
-        <GardenTable gardenList={gardenList} />
+        <GardenTable
+          gardenList={gardenList}
+          dropdownSelection={dropdownSelection}
+        />
       )}
     </div>
   );
