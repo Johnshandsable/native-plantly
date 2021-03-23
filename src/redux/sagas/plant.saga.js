@@ -4,7 +4,7 @@ import axios from 'axios';
 const getPlants = function* () {
   try {
     // gets data from server
-    const response = yield axios.get(`/api/plant-details`);
+    const response = yield axios.get(`/api/v2`);
 
     console.log('SAGAS - response', response.data);
 

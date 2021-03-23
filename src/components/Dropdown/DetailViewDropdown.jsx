@@ -3,18 +3,20 @@ import { useState } from 'react';
 
 // MATERIAL UI
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import Select from '@material-ui/core/Select';
 
 function Dropdown({ plant, dropdownList }) {
   const dispatch = useDispatch();
   const [dropdownSelection, setDropdownSelection] = useState(
-    dropdownList[0].id
+    dropdownList.length ? dropdownList[0].id : null
   );
 
+  // event handlers
   const handleSubmitToGardenSection = () => {
-    if (dropdownSelection === '') {
-      // TODO: Handle this better
+    if (dropdownSelection === null) {
+      console.log('dropdownSelection is null');
       return;
     } else {
       dispatch({
@@ -28,7 +30,6 @@ function Dropdown({ plant, dropdownList }) {
   };
 
   const handleSelectionChange = (evt) => {
-    console.log(evt.target.value);
     setDropdownSelection(evt.target.value);
   };
 
@@ -37,6 +38,7 @@ function Dropdown({ plant, dropdownList }) {
       <Button
         size="small"
         color="primary"
+        endIcon={<PlaylistAddIcon />}
         onClick={handleSubmitToGardenSection}
       >
         Add to List

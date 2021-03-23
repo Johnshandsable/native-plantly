@@ -50,9 +50,6 @@ function PlantItem({ plant, dropdownList }) {
     <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
       <Card>
         <CardActionArea>
-          {/* <div className="card-header">
-            <Typography>Click Me</Typography>
-          </div> */}
           {plant.image.image_url ? (
             <img
               className="card-image"

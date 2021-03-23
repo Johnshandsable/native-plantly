@@ -48,10 +48,6 @@ function GardenItem({ plant, dropdownSelection }) {
     setExpanded(!expanded);
   };
 
-  // function refreshPage() {
-  //   window.location.reload(false);
-  // }
-
   const handleDeletePlant = (evt) => {
     console.log('currentTarget', evt.currentTarget.value);
     dispatch({
@@ -59,9 +55,6 @@ function GardenItem({ plant, dropdownSelection }) {
       payload: {
         id: plant.id,
         sectionId: dropdownSelection,
-        // onComplete: () => {
-        //   refreshPage();
-        // },
       },
     });
   };
@@ -76,13 +69,13 @@ function GardenItem({ plant, dropdownSelection }) {
         <Button
           style={{
             color: '#e74c3c',
+            alignItems: 'center',
+            justifyContent: 'end',
           }}
           endIcon={<DeleteIcon />}
           value={plant.id}
           onClick={handleDeletePlant}
-        >
-          Delete
-        </Button>
+        ></Button>
         <CardHeader
           title={plant.plant.main_species.common_name}
           subheader={plant.plant.family_common_name}

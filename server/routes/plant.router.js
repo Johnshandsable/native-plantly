@@ -7,6 +7,7 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
+// Deprecated for v2
 router.get('/', async (req, res) => {
   try {
     const searchToken = 'Sunflower'; // default search value

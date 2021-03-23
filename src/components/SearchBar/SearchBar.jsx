@@ -47,6 +47,7 @@ function SearchBar() {
         type: 'SEARCH_PLANTS',
         payload: searchValue,
       });
+      setSearchValue('');
     }
   };
 

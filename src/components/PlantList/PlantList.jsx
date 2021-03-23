@@ -46,16 +46,11 @@ function PlantList() {
   // Setup classes
   const classes = useStyles();
 
-  console.log('CLIENT - plantList', plantList);
-
   return (
     <div className={classes.root}>
       {' '}
       {/* spacing of Grid must be used on container */}
       <Grid container spacing={3}>
-        {/* <Grid item xs={12}>
-          <Typography variant="h1">Native Plants</Typography>
-        </Grid> -- May be used for showing what area plants are native to */}
         {plantList.map((plant, index) => {
           return (
             <PlantItem key={index} plant={plant} dropdownList={dropdownList} />

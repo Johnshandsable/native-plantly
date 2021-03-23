@@ -32,8 +32,8 @@ router.get('/', async (req, res) => {
           },
         ],
         pagingOptions: {
-          page: null,
-          recordsPerPage: null,
+          page: 0,
+          recordsPerPage: 10,
         },
         recordSubtypeCriteria: [],
         modifiedSince: null,

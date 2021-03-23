@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 const axios = require('axios');
-const bundleData = require('../modules/bundledata');
+const bundleDatav2 = require('../modules/bundledatav2');
 const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
@@ -54,7 +54,7 @@ router.get('/:token', async (req, res) => {
         ],
       } // above info sent to NatureServe API
     ); // end of POST request
-    const bundledData = await bundleData(listOfPlants.data.results);
+    const bundledData = await bundleDatav2(listOfPlants.data.results);
     console.log(bundledData);
     res.send(bundledData);
   } catch (err) {

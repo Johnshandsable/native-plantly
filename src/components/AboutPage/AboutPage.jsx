@@ -54,27 +54,30 @@ function AboutPage() {
                 textAlign: 'left',
                 paddingTop: 10,
                 marginTop: 20,
+                borderTop: '2px solid #34495e',
+              }}
+            >
+              With regard to North America, native plants are those which exist
+              in a geographical location prior to European settlement. This
+              means the plants were naturally there without being introduced
+              into an area by humans, or from a plant that was.
+            </Typography>
+            <br />
+            <Typography
+              style={{
+                color: '#34495e',
+                textAlign: 'left',
                 marginBottom: 20,
                 paddingBottom: 10,
-                borderTop: '2px solid #34495e',
                 borderBottom: '2px solid #34495e',
               }}
             >
-              <Typography>
-                With regard to North America, native plants are those which
-                exist in a geographical location prior to European settlement.
-                This means the plants were naturally there without being
-                introduced into an area by humans, or from a plant that was.
-              </Typography>
-              <br />
-              <Typography>
-                A plant in its native range evolved to be in that environment.
-                Evolution is a slow process, and thus the plant evolved over
-                hundreds or thousands of years with the other plants, animals,
-                and insects in that ecosystem. Therefore they provide huge
-                ecological benefit, but are also kept in check by other species,
-                whether it is other plants or other life forms.
-              </Typography>
+              A plant in its native range evolved to be in that environment.
+              Evolution is a slow process, and thus the plant evolved over
+              hundreds or thousands of years with the other plants, animals, and
+              insects in that ecosystem. Therefore they provide huge ecological
+              benefit, but are also kept in check by other species, whether it
+              is other plants or other life forms.
             </Typography>
             <img
               className="about-image"
