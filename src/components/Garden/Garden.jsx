@@ -29,7 +29,6 @@ function Garden() {
 
   return (
     <div className={classes.root}>
-      <CreateNewDropDownButton />
       <GardenDropdown />
     </div>
   );

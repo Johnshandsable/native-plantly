@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 
 // CUSTOM COMPONENTS
+import CreateNewDropdownButton from '../Buttons/CreateNewDropdownButton';
 import GardenTable from '../Tables/GardenTable';
 
 // MATERIAL UI
@@ -106,7 +107,7 @@ function GardenDropdown() {
   return (
     <div className="dropdown-garden">
       {/* Dropdown List for Garden Section */}
-      {dropdownList !== undefined && dropdownList.length > 0 ? (
+      {dropdownList.length > 0 ? (
         <Select
           defaultValue={dropdownSelection}
           value={dropdownSelection}
@@ -155,9 +156,15 @@ function GardenDropdown() {
       >
         Delete
       </Button>
+      <CreateNewDropdownButton />
       {/* Start of Garden Data Processing */}
       {gardenList.length === 0 || gardenList === undefined ? (
-        <Typography>
+        <Typography
+          variant="h5"
+          style={{
+            marginTop: 50,
+          }}
+        >
           Add plants to your Garden and they will appear below!
         </Typography>
       ) : (

@@ -19,7 +19,6 @@ function CreateNewDropdownButton() {
       inputPlaceholder: 'Write something',
     }).then((result) => {
       if (result.value) {
-        // console.log('Result: ' + result.value);
         dispatch({
           type: 'ADD_DROPDOWN_SECTION',
           payload: {
@@ -32,7 +31,6 @@ function CreateNewDropdownButton() {
 
   return (
     <Button
-      size="small"
       color="secondary"
       endIcon={<AddIcon />}
       onClick={handleCreateNewDropdownSelection}
