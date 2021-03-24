@@ -73,7 +73,6 @@ function* getPlantsBySection(action) {
       type: 'SET_PLANTS_BY_SECTION',
       payload: response.data,
     });
-    action.payload.onComplete();
   } catch (err) {
     console.error('CLIENT - get plant by section an error occurred', err);
   }

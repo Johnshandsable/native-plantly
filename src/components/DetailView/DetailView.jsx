@@ -2,12 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 // CUSTOM COMPONENTS
+import Carousel from './Carousel';
 import DetailViewDropdown from '../Dropdown/DetailViewDropdown';
 import NavigateHomeButton from '../Buttons/NavigateHomeButton';
 import bundleCarouselData from '../../helpers/BundleCarouselData';
-// CUSTOM COMPONENTS
-import Carousel from './Carousel';
-import Dropdown from '../Dropdown/Dropdown';
 
 // MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';

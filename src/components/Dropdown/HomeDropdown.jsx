@@ -7,7 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import Select from '@material-ui/core/Select';
 
-function Dropdown({ plant, dropdownList }) {
+function HomeDropdown({ plant, dropdownList }) {
   const dispatch = useDispatch();
   const [dropdownSelection, setDropdownSelection] = useState(
     dropdownList.length ? dropdownList[0].id : null
@@ -66,4 +66,4 @@ function Dropdown({ plant, dropdownList }) {
   );
 }
 
-export default Dropdown;
+export default HomeDropdown;

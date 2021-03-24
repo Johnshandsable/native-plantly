@@ -52,19 +52,12 @@ function GardenDropdown() {
       type: 'GET_PLANTS_BY_SECTION',
       payload: {
         data: dropdownSelection,
-        onComplete: () => {
-          console.log('gardenList', gardenList);
-        },
       },
     });
   };
 
   const handleSelectionChange = (evt) => {
-    console.log('CURRENT - ', dropdownSelection);
-    console.log('INCOMING VALUE -', evt.target.value);
     setDropdownSelection(evt.target.value);
-    setDropdownSelection(evt.target.value);
-    console.log('UPDATED - ', dropdownSelection);
     getPlantsBySection();
   };
 

@@ -14,7 +14,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
 // Custom Components
-import Dropdown from '../Dropdown/Dropdown';
+import HomeDropdown from '../Dropdown/HomeDropdown';
 import CreateNewDropdownButton from '../Buttons/CreateNewDropdownButton';
 
 function PlantItem({ plant, dropdownList }) {
@@ -82,7 +82,7 @@ function PlantItem({ plant, dropdownList }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Dropdown plant={plant} dropdownList={dropdownList} />
+          <HomeDropdown plant={plant} dropdownList={dropdownList} />
           <CreateNewDropdownButton />
         </CardActions>
       </Card>
