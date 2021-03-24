@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 // MATERIAL UI
+import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import Select from '@material-ui/core/Select';
 
 function HomeDropdown({ plant, dropdownList }) {
@@ -29,23 +29,19 @@ function HomeDropdown({ plant, dropdownList }) {
     }
   };
 
+  // event handlers
   const handleSelectionChange = (evt) => {
-    console.log(evt.target.value);
     setDropdownSelection(evt.target.value);
   };
 
   return (
-    <div>
-      <Button
-        size="small"
-        color="primary"
-        onClick={handleSubmitToGardenSection}
-        endIcon={<PlaylistAddIcon />}
-      >
-        Add to List
-      </Button>
+    <div className="dropdown-home">
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
+          style={{
+            marginRight: 15,
+            color: '#0984e3',
+          }}
           defaultValue={dropdownList[0].id}
           onChange={handleSelectionChange}
         >
@@ -62,6 +58,14 @@ function HomeDropdown({ plant, dropdownList }) {
           </MenuItem>
         </Select>
       )}
+      <Button
+        size="small"
+        color="primary"
+        onClick={handleSubmitToGardenSection}
+        endIcon={<AddIcon />}
+      >
+        Add to Garden
+      </Button>
     </div>
   );
 }

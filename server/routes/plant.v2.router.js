@@ -6,8 +6,8 @@ const bundleDatav2 = require('../modules/bundledatav2');
 
 router.get('/', async (req, res) => {
   try {
-    const searchToken = 'Sunflower'; // default search value
-    let searchState = 'MO';
+    const searchToken = 'Beardtongue'; // default search value
+    let searchState = req.user.location || 'MO';
 
     console.log('SERVER - GET - get plants by location', searchState);
 

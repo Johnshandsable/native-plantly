@@ -34,6 +34,7 @@ function GardenDropdown() {
     getPlantsBySection();
   }, [dropdownSelection]);
 
+  // dispatches
   const getGardenDropdown = () => {
     dispatch({
       type: 'GET_DROPDOWN',
@@ -47,7 +48,6 @@ function GardenDropdown() {
       console.log('dropdownSelection is null');
       return;
     }
-
     dispatch({
       type: 'GET_PLANTS_BY_SECTION',
       payload: {
@@ -56,6 +56,7 @@ function GardenDropdown() {
     });
   };
 
+  // event handlers
   const handleSelectionChange = (evt) => {
     setDropdownSelection(evt.target.value);
     getPlantsBySection();
@@ -102,10 +103,8 @@ function GardenDropdown() {
     });
   };
 
-  console.log('dropdownSelection', dropdownSelection);
-
   return (
-    <div>
+    <div className="dropdown-garden">
       {/* Dropdown List for Garden Section */}
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
@@ -115,12 +114,18 @@ function GardenDropdown() {
             handleSelectionChange(evt);
           }}
           style={{
-            marginLeft: '5px',
-            marginRight: '5px',
+            marginLeft: 5,
+            marginRight: 5,
           }}
         >
           {dropdownList.map((dropdownItem, index) => (
-            <MenuItem value={dropdownItem.id} key={index}>
+            <MenuItem
+              value={dropdownItem.id}
+              key={index}
+              style={{
+                paddingLeft: 10,
+              }}
+            >
               {dropdownItem.name}
             </MenuItem>
           ))}

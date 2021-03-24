@@ -5,8 +5,12 @@ const getPlants = function* () {
   try {
     // gets data from server
     const response = yield axios.get(`/api/v2`);
-
     console.log('SAGAS - response', response.data);
+
+    if (response.data.length < 1) {
+      console.log('Could not search for particular result');
+      return;
+    }
 
     yield put({
       type: 'SET_PLANTS',

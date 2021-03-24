@@ -163,3 +163,9 @@ ul {
 .about-image {
   border-radius: 5px;
 }
+
+.dropdown-home {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+}

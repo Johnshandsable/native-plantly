@@ -50,6 +50,10 @@ function GardenItem({ plant, dropdownSelection }) {
 
   const handleDeletePlant = (evt) => {
     console.log('currentTarget', evt.currentTarget.value);
+    console.log(evt);
+    if (!evt.currentTarget.value) {
+      return;
+    }
     dispatch({
       type: 'DELETE_PLANT',
       payload: {
@@ -66,16 +70,6 @@ function GardenItem({ plant, dropdownSelection }) {
   return (
     <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
       <Card className={classes.root}>
-        <Button
-          style={{
-            color: '#e74c3c',
-            alignItems: 'center',
-            justifyContent: 'end',
-          }}
-          endIcon={<DeleteIcon />}
-          value={plant.id}
-          onClick={handleDeletePlant}
-        ></Button>
         <CardHeader
           title={plant.plant.main_species.common_name}
           subheader={plant.plant.family_common_name}
@@ -98,8 +92,16 @@ function GardenItem({ plant, dropdownSelection }) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+          <IconButton
+            value={plant.id}
+            onClick={handleDeletePlant}
+            aria-label="delete plant from garden"
+          >
+            <DeleteIcon
+              style={{
+                color: '#e74c3c',
+              }}
+            />
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
