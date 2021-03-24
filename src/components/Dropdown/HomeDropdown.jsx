@@ -40,7 +40,6 @@ function HomeDropdown({ plant, dropdownList }) {
         <Select
           style={{
             marginRight: 15,
-            color: '#0984e3',
           }}
           defaultValue={dropdownList[0].id}
           onChange={handleSelectionChange}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+// Sweetalert
+import swal from 'sweetalert';
+
 // MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -22,6 +25,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function GardenItem({ plant, dropdownSelection }) {
   const dispatch = useDispatch();
+  const [expanded, setExpanded] = React.useState(false);
   const useStyles = makeStyles((theme) => ({
     root: {
       marginTop: 20,
@@ -49,23 +53,35 @@ function GardenItem({ plant, dropdownSelection }) {
   };
 
   const handleDeletePlant = (evt) => {
-    console.log('currentTarget', evt.currentTarget.value);
-    console.log(evt);
     if (!evt.currentTarget.value) {
       return;
     }
-    dispatch({
-      type: 'DELETE_PLANT',
-      payload: {
-        id: plant.id,
-        sectionId: dropdownSelection,
-      },
+    swal({
+      title: 'Are you sure?',
+      text: `Once deleted, you will not get back your plant, but you can always add new ones.`,
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        dispatch({
+          type: 'DELETE_PLANT',
+          payload: {
+            id: plant.id,
+            sectionId: dropdownSelection,
+          },
+        });
+        swal('Your plant is now gone!', {
+          icon: 'success',
+        });
+      } else {
+        swal('Your lovely native plant is safe!');
+      }
     });
   };
 
-  // Local state
+  // Classes for styling
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
 
   return (
     <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
@@ -119,7 +135,34 @@ function GardenItem({ plant, dropdownSelection }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Specifications</Typography>
+            <Typography paragraph>Descriptive Info</Typography>
+            {/* // plant.plant.main_species.distribution.native -> list of native states
+            // plant.plant.main_species.foliage.color, leaf_retention -> autumn leaf color */}
+            <Typography variant="body2" color="textSecondary" component="p">
+              Foliage Color:{' '}
+              {plant.plant.main_species.foliage.color
+                ? plant.plant.main_species.foliage.color
+                : 'None'}{' '}
+              <br />
+              Leaf Retention:{' '}
+              {plant.plant.main_species.foliage.leaf_retention ? 'Yes' : 'No'}
+              <br />
+              Flowering:{' '}
+              {plant.plant.main_species.flower.conspicuous ? 'Yes' : 'No'}
+              <br />
+              Fruits or Seeds:{' '}
+              {plant.plant.main_species.fruit_or_seed.conspicuous
+                ? 'Yes'
+                : 'No'}
+            </Typography>
+            <Typography
+              paragraph
+              style={{
+                marginTop: 10,
+              }}
+            >
+              Specifications
+            </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               Average Height:{' '}
               {plant.plant.main_species.specifications.average_height.cm

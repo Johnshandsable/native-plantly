@@ -37,9 +37,6 @@ function Dropdown({ plant, dropdownList }) {
     <div className="dropdown-detail">
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
-          style={{
-            color: '#0984e3',
-          }}
           defaultValue={dropdownList[0].id}
           onChange={handleSelectionChange}
         >
