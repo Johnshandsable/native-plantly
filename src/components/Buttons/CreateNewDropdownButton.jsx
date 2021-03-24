@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 // MATERIAL UI
+import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
 // SWEETALERT
@@ -18,7 +19,6 @@ function CreateNewDropdownButton() {
       inputPlaceholder: 'Write something',
     }).then((result) => {
       if (result.value) {
-        // console.log('Result: ' + result.value);
         dispatch({
           type: 'ADD_DROPDOWN_SECTION',
           payload: {
@@ -31,11 +31,11 @@ function CreateNewDropdownButton() {
 
   return (
     <Button
-      size="small"
       color="secondary"
+      endIcon={<AddIcon />}
       onClick={handleCreateNewDropdownSelection}
     >
-      Create new Garden Section
+      New Garden
     </Button>
   );
 }

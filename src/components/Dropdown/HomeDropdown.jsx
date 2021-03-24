@@ -2,19 +2,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 // MATERIAL UI
+import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
-function Dropdown({ plant, dropdownList }) {
+function HomeDropdown({ plant, dropdownList }) {
   const dispatch = useDispatch();
   const [dropdownSelection, setDropdownSelection] = useState(
-    dropdownList[0].id
+    dropdownList.length ? dropdownList[0].id : null
   );
 
+  // event handlers
   const handleSubmitToGardenSection = () => {
-    if (dropdownSelection === '') {
-      // TODO: Handle this better
+    if (dropdownSelection === null) {
+      console.log('dropdownSelection is null');
       return;
     } else {
       dispatch({
@@ -27,22 +29,18 @@ function Dropdown({ plant, dropdownList }) {
     }
   };
 
+  // event handlers
   const handleSelectionChange = (evt) => {
-    console.log(evt.target.value);
     setDropdownSelection(evt.target.value);
   };
 
   return (
-    <div>
-      <Button
-        size="small"
-        color="primary"
-        onClick={handleSubmitToGardenSection}
-      >
-        Add to List
-      </Button>
+    <div className="dropdown-home">
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
+          style={{
+            marginRight: 15,
+          }}
           defaultValue={dropdownList[0].id}
           onChange={handleSelectionChange}
         >
@@ -59,8 +57,16 @@ function Dropdown({ plant, dropdownList }) {
           </MenuItem>
         </Select>
       )}
+      <Button
+        size="small"
+        color="primary"
+        onClick={handleSubmitToGardenSection}
+        endIcon={<AddIcon />}
+      >
+        Add to Garden
+      </Button>
     </div>
   );
 }
 
-export default Dropdown;
+export default HomeDropdown;

@@ -14,7 +14,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
 // Custom Components
-import Dropdown from '../Dropdown/Dropdown';
+import HomeDropdown from '../Dropdown/HomeDropdown';
 import CreateNewDropdownButton from '../Buttons/CreateNewDropdownButton';
 
 function PlantItem({ plant, dropdownList }) {
@@ -50,9 +50,6 @@ function PlantItem({ plant, dropdownList }) {
     <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
       <Card>
         <CardActionArea>
-          {/* <div className="card-header">
-            <Typography>Click Me</Typography>
-          </div> */}
           {plant.image.image_url ? (
             <img
               className="card-image"
@@ -85,7 +82,7 @@ function PlantItem({ plant, dropdownList }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Dropdown plant={plant} dropdownList={dropdownList} />
+          <HomeDropdown plant={plant} dropdownList={dropdownList} />
           <CreateNewDropdownButton />
         </CardActions>
       </Card>

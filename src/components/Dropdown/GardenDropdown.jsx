@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 
 // CUSTOM COMPONENTS
+import CreateNewDropdownButton from '../Buttons/CreateNewDropdownButton';
 import GardenTable from '../Tables/GardenTable';
 
 // MATERIAL UI
@@ -20,7 +21,7 @@ function GardenDropdown() {
   const dispatch = useDispatch();
   const dropdownList = useSelector((store) => store.garden);
   const [dropdownSelection, setDropdownSelection] = useState(
-    dropdownList[0].id
+    dropdownList.length ? dropdownList[0].id : null
   );
   const gardenList = useSelector(
     (store) => store.plants.plantsBySectionReducer
@@ -28,9 +29,13 @@ function GardenDropdown() {
 
   useEffect(() => {
     getGardenDropdown();
-    getPlantsBySection();
   }, []);
 
+  useEffect(() => {
+    getPlantsBySection();
+  }, [dropdownSelection]);
+
+  // dispatches
   const getGardenDropdown = () => {
     dispatch({
       type: 'GET_DROPDOWN',
@@ -39,22 +44,22 @@ function GardenDropdown() {
 
   const getPlantsBySection = () => {
     console.log('dropdownSelection', dropdownSelection);
+
+    if (dropdownSelection === null) {
+      console.log('dropdownSelection is null');
+      return;
+    }
     dispatch({
       type: 'GET_PLANTS_BY_SECTION',
       payload: {
         data: dropdownSelection,
-        onComplete: () => {
-          console.log('gardenList', gardenList);
-        },
       },
     });
   };
 
+  // event handlers
   const handleSelectionChange = (evt) => {
-    console.log('CURRENT - ', dropdownSelection);
-    console.log('INCOMING VALUE -', evt.target.value);
     setDropdownSelection(evt.target.value);
-    console.log('UPDATED - ', dropdownSelection);
     getPlantsBySection();
   };
 
@@ -99,24 +104,29 @@ function GardenDropdown() {
     });
   };
 
-  console.log('dropdownSelection', dropdownSelection);
-
   return (
-    <div>
+    <div className="dropdown-garden">
       {/* Dropdown List for Garden Section */}
-      {dropdownList !== undefined && dropdownList.length > 0 ? (
+      {dropdownList.length > 0 ? (
         <Select
           defaultValue={dropdownSelection}
+          value={dropdownSelection}
           onChange={(evt) => {
             handleSelectionChange(evt);
           }}
           style={{
-            marginLeft: '5px',
-            marginRight: '5px',
+            marginLeft: 5,
+            marginRight: 5,
           }}
         >
           {dropdownList.map((dropdownItem, index) => (
-            <MenuItem value={dropdownItem.id} key={index}>
+            <MenuItem
+              value={dropdownItem.id}
+              key={index}
+              style={{
+                paddingLeft: 10,
+              }}
+            >
               {dropdownItem.name}
             </MenuItem>
           ))}
@@ -146,13 +156,22 @@ function GardenDropdown() {
       >
         Delete
       </Button>
+      <CreateNewDropdownButton />
       {/* Start of Garden Data Processing */}
       {gardenList.length === 0 || gardenList === undefined ? (
-        <Typography>
+        <Typography
+          variant="h5"
+          style={{
+            marginTop: 50,
+          }}
+        >
           Add plants to your Garden and they will appear below!
         </Typography>
       ) : (
-        <GardenTable gardenList={gardenList} />
+        <GardenTable
+          gardenList={gardenList}
+          dropdownSelection={dropdownSelection}
+        />
       )}
     </div>
   );

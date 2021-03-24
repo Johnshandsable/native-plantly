@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const identifyRouter = require('./routes/identify.router');
 const plantRouter = require('./routes/plant.router');
+const plantv2Router = require('./routes/plant.v2.router');
 const searchRouter = require('./routes/search.router');
 const gardenRouter = require('./routes/garden.router');
 const gardenSectionRouter = require('./routes/garden.section.router');
@@ -31,9 +33,14 @@ app.use('/api/plant-details', plantRouter);
 app.use('/garden', gardenRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/section', gardenSectionRouter);
+// app.use('/api/identify', identifyRouter);
+
+// Testing Routes
+app.use('/api/v2', plantv2Router);
 
 // Serve static files
 app.use(express.static('build'));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // App Set //
 const PORT = process.env.PORT || 5000;
