@@ -47,7 +47,7 @@ function PlantItem({ plant, dropdownList }) {
   return (
     // Set breakpoints for multiple screen sizes
     // Refer to notes.md for breakpoints
-    <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
+    <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
       <Card>
         <CardActionArea>
           {plant.image.image_url ? (

@@ -90,7 +90,6 @@ function GardenItem({ plant, dropdownSelection }) {
           title={plant.plant.main_species.common_name}
           subheader={plant.plant.family_common_name}
         />
-
         <CardMedia
           className={classes.media}
           image={
@@ -139,21 +138,24 @@ function GardenItem({ plant, dropdownSelection }) {
             {/* // plant.plant.main_species.distribution.native -> list of native states
             // plant.plant.main_species.foliage.color, leaf_retention -> autumn leaf color */}
             <Typography variant="body2" color="textSecondary" component="p">
+              Duration:{' '}
+              {plant.plant.main_species.duration ? 'Perennial' : 'Annual'}
+              <br />
+              Flowering:{' '}
+              {plant.plant.main_species.flower.conspicuous ? 'Yes' : 'No'}
+              <br />
               Foliage Color:{' '}
               {plant.plant.main_species.foliage.color
                 ? plant.plant.main_species.foliage.color
                 : 'None'}{' '}
               <br />
-              Leaf Retention:{' '}
-              {plant.plant.main_species.foliage.leaf_retention ? 'Yes' : 'No'}
-              <br />
-              Flowering:{' '}
-              {plant.plant.main_species.flower.conspicuous ? 'Yes' : 'No'}
-              <br />
               Fruits or Seeds:{' '}
               {plant.plant.main_species.fruit_or_seed.conspicuous
                 ? 'Yes'
                 : 'No'}
+              Leaf Retention:{' '}
+              {plant.plant.main_species.foliage.leaf_retention ? 'Yes' : 'No'}
+              <br />
             </Typography>
             <Typography
               paragraph
