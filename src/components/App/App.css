@@ -12,6 +12,7 @@ br {
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  padding: 0px;
 }
 
 img {
@@ -34,56 +35,6 @@ Container
 Button
 -------------------------------------------------------------------------------- */
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
-.btn:hover {
-  background-color: #008183;
-  text-decoration: none;
-}
-
-/* This line makes the "Register" and "Login" buttons look like links */
-.btn_asLink {
-  padding: 0;
-  border-width: 0;
-  border-bottom: 1px solid #444;
-  border-radius: 0;
-  background: none;
-  font: inherit;
-  color: #444;
-}
-
-.btn_asLink:hover {
-  background-color: transparent;
-  border-color: #008183;
-  color: #008183;
-}
-
 /* --------------------------------------------------------------------------------
 Alert
 -------------------------------------------------------------------------------- */
@@ -103,6 +54,26 @@ Alert
 Form Treatment
 -------------------------------------------------------------------------------- */
 
+form {
+  background-color: #dfe6e9;
+  font-family: monospace;
+  padding-left: 10px;
+  border: 2px solid #636e72;
+  border-radius: 3px;
+  justify-content: center;
+  max-width: 300px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #2d3436;
+  opacity: 1; /* Firefox */
+}
+
+label {
+  margin-right: 10px;
+}
+
 .formPanel {
   box-sizing: border-box;
   width: 400px;
@@ -115,9 +86,26 @@ Form Treatment
 }
 
 input {
-  margin: 5px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  line-height: 25px;
+  width: 60%;
+  height: 10%;
 }
+
+input[type='text'],
+[type='password'] {
+  font-size: 18px;
+}
+
+/* input[type='text']:focus,
+[type='password']:focus {
+  outline: 2px solid #6c5ce7;
+  border-radius: 1px;
+} */
+
+/* End of Form  */
 
 .picture-title {
   margin-top: 10px;
