@@ -4,7 +4,10 @@ import { useSelector } from 'react-redux';
 
 // MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 function LoginForm() {
@@ -28,58 +31,66 @@ function LoginForm() {
     }
   }; // end login
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      marginTop: 100,
-      marginBottom: 50,
-      marginLeft: 20,
-      marginRight: 20,
-      height: 'fixed',
-    },
-    formPanel: {
-      color: 'secondary',
-      margin: 'dense',
-    },
-  }));
-  // Setup classes
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
+    <div class="overlay">
       <form onSubmit={login}>
-        <Typography variant="h4">Login</Typography>
-        {errors.loginMessage && (
-          <h3 className="alert" role="alert">
-            {errors.loginMessage}
-          </h3>
-        )}
-        <div>
-          <label htmlFor="username">
-            Username:
+        <div className="con">
+          <header className="head-form">
+            <Typography
+              variant="h2"
+              style={{
+                fontFamily: 'redressed',
+              }}
+            >
+              Log In
+            </Typography>
+            <Typography
+              variant="p"
+              style={{
+                marginTop: 20,
+              }}
+            >
+              Login here using your username and password
+            </Typography>
+          </header>
+          <br />
+          <div className="field-set">
             <input
+              className="form-input"
+              id="txt-input"
+              placeholder="username"
+              required
               type="text"
               name="username"
-              required
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password:
+            <br />
             <input
-              type="password"
+              className="form-input"
+              id="pwd"
               name="password"
-              required
+              placeholder="password"
+              type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <input className="btn" type="submit" name="submit" value="Log In" />
+              required
+            />{' '}
+            <br />
+            <Button
+              color="secondary"
+              type="submit"
+              variant="contained"
+              value="Log In"
+              style={{
+                width: '100%',
+                marginTop: 30,
+              }}
+            >
+              {' '}
+              Log In{' '}
+            </Button>
+          </div>
         </div>
       </form>
     </div>

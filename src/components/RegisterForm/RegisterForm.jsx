@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // MATERIAL UI
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 function RegisterForm() {
@@ -12,6 +14,7 @@ function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
+  // event handlers
   const registerUser = (event) => {
     event.preventDefault();
 
@@ -26,61 +29,78 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
-      <Typography>Register User</Typography>
-      {errors.registrationMessage && (
-        <Typography className="alert" role="alert">
-          {errors.registrationMessage}
-        </Typography>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={username}
-            required
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            required
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="location">
-          State Abbreviation:
-          <input
-            type="text"
-            name="location"
-            value={location}
-            required
-            onChange={(event) => setLocation(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <Button
-          color="primary"
-          variant="outlined"
-          value="Register"
-          name="submit"
-        >
-          Submit
-        </Button>
-        {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
-      </div>
-    </form>
+    <div class="overlay">
+      <form onSubmit={registerUser}>
+        <div className="con">
+          <header className="head-form">
+            <Typography
+              variant="h2"
+              style={{
+                fontFamily: 'redressed',
+              }}
+            >
+              Registration
+            </Typography>
+            <Typography
+              variant="p"
+              style={{
+                marginTop: 20,
+              }}
+            >
+              Register here
+            </Typography>
+          </header>
+          <br />
+          <div className="field-set">
+            <input
+              className="form-input"
+              id="txt-input"
+              placeholder="username"
+              required
+              type="text"
+              name="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+            <br />
+            <input
+              className="form-input"
+              id="pwd"
+              name="password"
+              placeholder="password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />{' '}
+            <br />
+            <input
+              className="form-input"
+              placeholder="state abbreviation"
+              type="text"
+              name="location"
+              value={location}
+              required
+              onChange={(event) => setLocation(event.target.value)}
+            />
+            <br />
+            <Button
+              color="secondary"
+              type="submit"
+              variant="contained"
+              value="Log In"
+              style={{
+                width: '100%',
+                marginTop: 30,
+              }}
+            >
+              {' '}
+              Register{' '}
+            </Button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }
 

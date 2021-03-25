@@ -49,29 +49,32 @@ function App() {
     <Router>
       <div className="App">
         <ThemeProvider theme={theme}>
-          <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
 
             {/* Home Route */}
             <ProtectedRoute path="/home" exact>
+              <Nav />
               <SearchBar />
               <PlantList />
             </ProtectedRoute>
 
             {/* About Route */}
             <Route path="/about">
+              <Nav />
               <AboutPage />
             </Route>
 
             {/* Details View for Single Plants */}
             <ProtectedRoute path="/details/">
+              <Nav />
               <DetailView />
             </ProtectedRoute>
 
             {/* My Gardens Route */}
             <ProtectedRoute path="/my-gardens">
+              <Nav />
               <Garden />
             </ProtectedRoute>
 
