@@ -9,20 +9,23 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <div className="background">
       <LoginForm />
-      <Button
-        style={{
-          marginLeft: 15,
-        }}
-        color="secondary"
-        variant="contained"
-        onClick={() => {
-          history.push('/registration');
-        }}
-      >
-        Register
-      </Button>
+      <center>
+        <Button
+          style={{
+            width: 270,
+            marginTop: 30,
+          }}
+          color="secondary"
+          variant="contained"
+          onClick={() => {
+            history.push('/registration');
+          }}
+        >
+          Register
+        </Button>
+      </center>
     </div>
   );
 }

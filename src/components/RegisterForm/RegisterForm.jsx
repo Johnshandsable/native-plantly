@@ -28,70 +28,53 @@ function RegisterForm() {
     });
   }; // end registerUser
 
-  // custom styling
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      marginTop: 100,
-      marginBottom: 50,
-      marginLeft: 20,
-      marginRight: 20,
-      height: 'fixed',
-    },
-  }));
-  // Setup classes
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <form onSubmit={registerUser}>
+    <div class="overlay">
+      <form onSubmit={registerUser}>
+        <div className="con">
+          <header className="head-form">
             <Typography
-              variant="h4"
+              variant="h2"
               style={{
-                fontFamily: 'Redressed',
+                fontFamily: 'redressed',
               }}
             >
               Register User
             </Typography>
-            {errors.registrationMessage && (
-              <Typography className="alert" role="alert">
-                {errors.registrationMessage}
-              </Typography>
-            )}
-            {/* <div>
-        <label htmlFor="username"> */}
-            {/* Username: */}
+            <Typography
+              variant="p"
+              style={{
+                marginTop: 20,
+              }}
+            >
+              Register here setting a username, password, and state abbreviation
+            </Typography>
+          </header>
+          <br />
+          <div className="field-set">
             <input
+              className="form-input"
+              id="txt-input"
               placeholder="username"
+              required
               type="text"
               name="username"
               value={username}
-              required
               onChange={(event) => setUsername(event.target.value)}
-            />{' '}
+            />
             <br />
-            {/* </label>
-      </div> */}
-            {/* <div>
-        <label htmlFor="password"> */}
-            {/* Password: */}
             <input
+              className="form-input"
+              id="pwd"
+              name="password"
               placeholder="password"
               type="password"
-              name="password"
               value={password}
-              required
               onChange={(event) => setPassword(event.target.value)}
-            />{' '}
-            <br />
-            {/* </label>
-      </div> */}
-            {/* <div>
-        <label htmlFor="location">
-          State Abbreviation: */}
+              required
+            />
             <input
+              className="form-input"
               placeholder="state abbreviation"
               type="text"
               name="location"
@@ -100,25 +83,22 @@ function RegisterForm() {
               onChange={(event) => setLocation(event.target.value)}
             />{' '}
             <br />
-            {/* </label>
-      </div> */}
-            {/* <div> */}
             <Button
-              color="primary"
+              color="secondary"
+              type="submit"
               variant="contained"
               value="Register"
-              name="submit"
               style={{
-                marginBottom: 20,
+                width: '100%',
+                marginTop: 30,
               }}
             >
-              Submit
+              {' '}
+              Log In{' '}
             </Button>
-            {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
-            {/* </div> */}
-          </form>
-        </Grid>
-      </Grid>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }

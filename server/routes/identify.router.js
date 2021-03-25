@@ -3,7 +3,7 @@
 // const fs = require('fs');
 // const router = express.Router();
 
-// // const file = '../test/pic1.JPG';
+// const file = './pic3.JPG';
 // const base64file = fs.readFileSync(file, 'base64');
 
 // router.get('/', (req, res) => {

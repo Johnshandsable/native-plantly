@@ -31,87 +31,68 @@ function LoginForm() {
     }
   }; // end login
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      marginTop: 100,
-      marginBottom: 50,
-      marginLeft: 20,
-      marginRight: 20,
-      height: 'fixed',
-    },
-  }));
-  // Setup classes
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid
-          item
-          xs={12}
-          style={{
-            justifyContent: 'center',
-          }}
-        >
-          <form onSubmit={login}>
+    <div class="overlay">
+      <form onSubmit={login}>
+        <div className="con">
+          <header className="head-form">
             <Typography
-              variant="h4"
+              variant="h2"
               style={{
-                fontFamily: 'Redressed',
+                fontFamily: 'redressed',
               }}
             >
-              Login
+              Log In
             </Typography>
-            {errors.loginMessage && (
-              <Typography
-                variant="h4"
-                style={{
-                  color: '#e74c3c',
-                }}
-              >
-                {errors.loginMessage}
-              </Typography>
-            )}
-            {/* <label htmlFor="username">
-              Username */}
+            <Typography
+              variant="p"
+              style={{
+                marginTop: 20,
+              }}
+            >
+              Login here using your username and password
+            </Typography>
+          </header>
+          <br />
+          <div className="field-set">
             <input
+              className="form-input"
+              id="txt-input"
               placeholder="username"
+              required
               type="text"
               name="username"
-              required
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
-            {/* </label>{' '} */}
             <br />
-            {/* <label htmlFor="password">
-              Password */}
             <input
+              className="form-input"
+              id="pwd"
+              name="password"
               placeholder="password"
               type="password"
-              name="password"
-              required
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-            />{' '}
-            <br />
-            {/* </label>{' '} */}
+              required
+            />
             <br />
             <Button
-              color="primary"
+              color="secondary"
               type="submit"
               variant="contained"
               value="Log In"
               style={{
-                marginBottom: 20,
+                width: '100%',
+                marginTop: 30,
               }}
             >
-              Login
+              {' '}
+              Log In{' '}
             </Button>
-          </form>
-        </Grid>
-      </Grid>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
