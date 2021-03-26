@@ -10,6 +10,16 @@ function RegisterPage() {
 
   return (
     <div className="background">
+      <div className="background-video">
+        <video
+          src={process.env.PUBLIC_URL + 'sunflower.mp4'}
+          muted
+          loop
+          autoPlay
+        >
+          {' '}
+        </video>
+      </div>
       <RegisterForm />
       <center>
         <Button

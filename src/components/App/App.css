@@ -130,6 +130,15 @@ form .con {
 /* //////////////////////////////////////////// */
 /* //////////////////////////////////////////// */
 
+.background-video {
+  z-index: -1;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .input-item {
   background: #fff;
   color: #333;
