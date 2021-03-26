@@ -44,12 +44,7 @@ function LoginForm() {
             >
               Log In
             </Typography>
-            <Typography
-              variant="p"
-              style={{
-                marginTop: 20,
-              }}
-            >
+            <Typography variant="p">
               Login here using your username and password
             </Typography>
           </header>

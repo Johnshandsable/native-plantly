@@ -37,17 +37,10 @@ function RegisterForm() {
               variant="h2"
               style={{
                 fontFamily: 'redressed',
+                marginBottom: 20,
               }}
             >
               Registration
-            </Typography>
-            <Typography
-              variant="p"
-              style={{
-                marginTop: 20,
-              }}
-            >
-              Register here
             </Typography>
           </header>
           <br />
