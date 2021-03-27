@@ -39,6 +39,10 @@ function Dropdown({ plant, dropdownList }) {
         <Select
           defaultValue={dropdownList[0].id}
           onChange={handleSelectionChange}
+          style={{
+            marginLeft: 5,
+            marginRight: 5,
+          }}
         >
           {dropdownList.map((dropdownItem, index) => (
             <MenuItem value={dropdownItem.id} key={dropdownItem.id}>

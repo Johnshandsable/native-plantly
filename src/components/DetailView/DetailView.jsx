@@ -85,17 +85,21 @@ function DetailView() {
               <CardContent>
                 {/* Common Name */}
                 <Typography gutterBottom variant="h5" component="h2">
-                  {detailedPlant.common_name}
+                  {detailedPlant.main_species.common_name}
                 </Typography>
                 {/* Family Name */}
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Family: {detailedPlant.family_common_name}
+                  {detailedPlant.family_common_name
+                    ? detailedPlant.family_common_name
+                    : 'Aster family'}
                 </Typography>
+                <br />
 
                 <Typography variant="body2" color="textSecondary" component="p">
                   {detailedPlant.main_species.growth.description
                     ? detailedPlant.main_species.growth.description
-                    : 'unknown origin'}
+                    : 'Plants are mainly multicellular organisms, predominantly photosynthetic eukaryotes of the kingdom Plantae. Historically, plants were treated as one of two kingdoms including all living things that were not animals, and all algae and fungi were treated as plants. However, all current definitions of Plantae exclude the fungi and some algae, as well as the prokaryotes (the archaea and bacteria). By one definition, plants form the clade Viridiplantae (Latin name for "green plants"), a group that includes the flowering plants, conifers and other gymnosperms, ferns and their allies, hornworts, liverworts, mosses, and the green algae, but excludes the red and brown algae.'}
+                  <br />
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -119,41 +123,42 @@ function DetailView() {
         <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
           <Card>
             <CardContent>
-              <Typography gutterBottom component="p">
+              <Typography variant="body2" color="textSecondary" component="p">
                 {/* detailedPlant.main_species.specifications.average_height.cm -> cm */}
                 Average height:{' '}
                 {detailedPlant.main_species.specifications.average_height.cm
                   ? detailedPlant.main_species.specifications.average_height.cm
                   : 'unknown'}{' '}
-                cm
+                (plants) cm. — (trees) in.
               </Typography>
-              <Typography gutterBottom component="p">
+              <Typography variant="body2" color="textSecondary" component="p">
                 {/* detailedPlant.main_species.duration -> perennial, etc. */}
                 Duration:{' '}
                 {detailedPlant.main_species.duration
                   ? detailedPlant.main_species.duration
                   : 'perennial'}
               </Typography>
-              <Typography gutterBottom component="p">
+              <Typography variant="body2" color="textSecondary" component="p">
                 {/* detailedPlant.main_species.edible */}
                 Edible: {detailedPlant.main_species.edible ? 'yes' : 'no'}
               </Typography>
-              <Typography gutterBottom component="p">
+              <Typography variant="body2" color="textSecondary" component="p">
                 {/* detailedPlant.main_species.flower.color */}
                 Flower Color:{' '}
                 {detailedPlant.main_species.flower.color
                   ? detailedPlant.main_species.flower.color
-                  : 'none'}
+                  : 'white'}
               </Typography>
-              <Typography gutterBottom component="p">
+              <Typography variant="body2" color="textSecondary" component="p">
                 {/* detailedPlant.main_species.specifications.toxicity */}
                 Toxic:{' '}
                 {detailedPlant.main_species.specifications.toxicity
-                  ? detailedPlant.main_species.specifications.toxicity
-                  : 'unknown'}
+                  ? 'yes'
+                  : 'no'}
               </Typography>
+              <br />
 
-              <Typography gutterBottom variant="h6">
+              <Typography paragraph>
                 Additional Resources
                 {detailedPlant.main_species.sources.map((source) => {
                   return (
