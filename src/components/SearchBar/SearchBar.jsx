@@ -6,8 +6,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
 import SendIcon from '@material-ui/icons/Send';
+import Typography from '@material-ui/core/Typography';
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -56,33 +56,49 @@ function SearchBar() {
   };
 
   return (
-    <div className="search-container">
-      <Grid>
-        <Grid item xs={12}>
-          <div className={classes.search}>
-            <InputBase
-              placeholder="search by species..."
-              inputProps={{ 'aria-label': 'search' }}
-              value={searchValue}
-              onChange={handleChangeSearchValue}
-            />
-          </div>
+    <>
+      <div className="search-container">
+        <Grid>
+          <Grid item xs={12}>
+            <div className={classes.search}>
+              <InputBase
+                placeholder="search by species..."
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchValue}
+                onChange={handleChangeSearchValue}
+              />
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Button
-        color="primary"
-        variant="outlined"
-        endIcon={<SendIcon />}
-        onClick={handleSearch}
+        <Button
+          color="primary"
+          variant="outlined"
+          endIcon={<SendIcon />}
+          onClick={handleSearch}
+          style={{
+            marginLeft: 50,
+            height: '100%',
+            marginRight: 50,
+          }}
+        >
+          Search
+        </Button>
+      </div>
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        component="p"
         style={{
-          marginLeft: 50,
-          height: '100%',
+          marginLeft: 30,
+          marginTop: 5,
         }}
       >
-        Search
-      </Button>
-    </div>
+        search powered by{' '}
+        <a href="https://explorer.natureserve.org/api-docs/">NatureServe</a> and{' '}
+        <a href="https://trefle.io/">Trefle</a>
+      </Typography>
+    </>
   );
 }
 
