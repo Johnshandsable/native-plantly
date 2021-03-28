@@ -151,7 +151,7 @@ input[class='form-input'] {
   width: 250px;
   height: 25px;
 
-  margin-top: 2%;
+  margin-top: 20px;
   padding: 15px;
 
   font-size: 16px;
@@ -176,6 +176,25 @@ input:focus {
 field-set {
   align-items: center;
   justify-content: center;
+}
+
+select {
+  width: 280px;
+  height: 25px;
+  margin-left: 5px;
+
+  margin-top: 20px;
+  padding: 15px;
+
+  font-size: 16px;
+  font-family: 'Abel', sans-serif;
+  color: #5e6472;
+
+  outline: none;
+  border: none;
+
+  border-radius: 0px 5px 5px 0px;
+  transition: 0.2s linear;
 }
 
 /* End Form  */
