@@ -90,7 +90,7 @@ function SearchBar() {
         color="textSecondary"
         component="p"
         style={{
-          marginLeft: 30,
+          marginLeft: 25,
           marginTop: 5,
         }}
       >
