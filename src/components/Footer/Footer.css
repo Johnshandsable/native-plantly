@@ -17,3 +17,19 @@
   width: 100px;
   margin-right: 20px;
 }
+
+.img-node {
+  width: 100px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.img-js {
+  width: 100px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.img-html {
+  width: 200px;
+}

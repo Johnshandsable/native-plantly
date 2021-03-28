@@ -3,28 +3,17 @@ import './Footer.css';
 
 // MATERIAL UI
 import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import GitHubIcon from '@material-ui/icons/GitHub';
 import Link from '@material-ui/core/Link';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Typography from '@material-ui/core/Typography';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
-      {'Copyright © John Shands'}
-      <Link
-        color="inherit"
-        href="https://github.com/Johnshandsable"
-      ></Link>{' '}
+      {'Copyright © John Shands '}
       {new Date().getFullYear()}
       {'.'}
-      <GitHubIcon />
     </Typography>
   );
 }
@@ -50,37 +39,37 @@ function Footer() {
     },
   }));
 
-  // const useStyles = makeStyles({
-  //   left: {
-  //     width: '100%',
-  //     alignItems: 'center',
-  //     justifyContent: 'left',
-  //     margin: 0,
-  //     padding: 0,
-  //   },
-  //   center: {
-  //     width: '100%',
-  //     alignItems: 'center',
-  //     justifyContent: 'left',
-  //     margin: 0,
-  //     padding: 0,
-  //   },
-  // });
-
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Container component="main" className={classes.main} maxWidth="sm">
+      <Container component="main" className={classes.main} maxWidth="md">
         <Typography variant="h2" component="h1" gutterBottom>
           Created with
         </Typography>
         <img
           className="img-icon"
+          src={process.env.PUBLIC_URL + '/react.png'}
+        ></img>
+        <img
+          className="img-icon"
           src={process.env.PUBLIC_URL + '/mui.png'}
         ></img>
-        <Typography variant="body1">Sticky footer placeholder.</Typography>
+        <img
+          className="img-node"
+          src={process.env.PUBLIC_URL + '/node.png'}
+        ></img>
+        <img className="img-js" src={process.env.PUBLIC_URL + '/js.png'}></img>
+        <img
+          className="img-html"
+          src={process.env.PUBLIC_URL + '/html-css.png'}
+        ></img>
+        <Typography variant="body1">
+          Special thanks to{' '}
+          <a href="https://explorer.natureserve.org/api-docs/">NatureServe</a>{' '}
+          and <a href="https://trefle.io/">Trefle</a> for plant data
+        </Typography>
       </Container>
       <footer className={classes.footer}>
         <Container maxWidth="sm">
@@ -89,22 +78,6 @@ function Footer() {
         </Container>
       </footer>
     </div>
-    // <div className="footer-clean">
-    //   <BottomNavigation showLabels className={classes.left}>
-    //     <BottomNavigationAction
-    //       style={{
-    //         margin: 0,
-    //         padding: 0,
-    //       }}
-    //       label="GitHub"
-    //       icon={<GitHubIcon />}
-    //     />
-    //     <Typography variant="body2" color="textSecondary" component="p">
-    //       John Shands © 2021
-    //     </Typography>{' '}
-    //     <br />
-    //   </BottomNavigation>
-    // </div>
   );
 }
 
