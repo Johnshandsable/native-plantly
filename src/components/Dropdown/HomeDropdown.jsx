@@ -39,6 +39,7 @@ function HomeDropdown({ plant, dropdownList }) {
       {dropdownList !== undefined && dropdownList.length > 0 ? (
         <Select
           style={{
+            paddingLeft: 5,
             marginRight: 15,
           }}
           defaultValue={dropdownList[0].id}

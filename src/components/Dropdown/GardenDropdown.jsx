@@ -116,6 +116,7 @@ function GardenDropdown() {
           }}
           style={{
             marginLeft: 5,
+            paddingLeft: 5,
             marginRight: 5,
           }}
         >

@@ -23,7 +23,7 @@ function Footer() {
     root: {
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '50vh',
+      minHeight: '80vh',
     },
     main: {
       marginTop: theme.spacing(6),

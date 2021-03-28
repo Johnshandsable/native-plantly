@@ -41,6 +41,7 @@ function Dropdown({ plant, dropdownList }) {
           onChange={handleSelectionChange}
           style={{
             marginLeft: 5,
+            paddingLeft: 5,
             marginRight: 5,
           }}
         >

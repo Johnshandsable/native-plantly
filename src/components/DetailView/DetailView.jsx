@@ -123,6 +123,7 @@ function DetailView() {
         <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
           <Card>
             <CardContent>
+              <Typography paragraph>Descriptive Info</Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 {/* detailedPlant.main_species.specifications.average_height.cm -> cm */}
                 Average height:{' '}
