@@ -23,14 +23,14 @@ function Footer() {
     root: {
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '100vh',
+      minHeight: '50vh',
     },
     main: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(6),
       marginBottom: theme.spacing(2),
     },
     footer: {
-      padding: theme.spacing(3, 2),
+      padding: theme.spacing(3, 0),
       marginTop: 'auto',
       backgroundColor:
         theme.palette.type === 'light'

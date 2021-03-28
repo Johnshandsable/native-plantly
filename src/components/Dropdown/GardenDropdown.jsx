@@ -144,7 +144,7 @@ function GardenDropdown() {
         endIcon={<EditIcon />}
         onClick={renameCurrentSelection}
       >
-        Edit
+        Edit Name
       </Button>
       {/* Delete Button for Garden Section */}
       <Button
@@ -154,7 +154,7 @@ function GardenDropdown() {
         endIcon={<DeleteIcon />}
         onClick={handleDeleteCurrentSelection}
       >
-        Delete
+        Delete Garden
       </Button>
       <CreateNewDropdownButton />
       {/* Start of Garden Data Processing */}
