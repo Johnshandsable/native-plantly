@@ -101,7 +101,6 @@ function GardenItem({ plant, dropdownSelection }) {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {plant.plant.main_species.scientific_name} <br />
             Found:{' '}
             {plant.plant.observations ? plant.plant.observations : 'U.S.A.'}
           </Typography>
@@ -186,6 +185,19 @@ function GardenItem({ plant, dropdownSelection }) {
               {plant.plant.main_species.specifications.toxicity
                 ? plant.plant.main_species.specifications.toxicity
                 : 'None'}
+            </Typography>
+            <Typography
+              paragraph
+              style={{
+                marginTop: 10,
+              }}
+            >
+              Taxonomy
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Scientific Name: {plant.plant.main_species.scientific_name} <br />
+              Genus: {plant.plant.genus.name} <br />
+              <br />
             </Typography>
           </CardContent>
         </Collapse>

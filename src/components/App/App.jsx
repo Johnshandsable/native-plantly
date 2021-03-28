@@ -58,24 +58,28 @@ function App() {
               <Nav />
               <SearchBar />
               <PlantList />
+              <Footer />
             </ProtectedRoute>
 
             {/* About Route */}
             <Route path="/about">
               <Nav />
               <AboutPage />
+              <Footer />
             </Route>
 
             {/* Details View for Single Plants */}
             <ProtectedRoute path="/details/">
               <Nav />
               <DetailView />
+              <Footer />
             </ProtectedRoute>
 
             {/* My Gardens Route */}
             <ProtectedRoute path="/my-gardens">
               <Nav />
               <Garden />
+              <Footer />
             </ProtectedRoute>
 
             {/* For protected routes, the view could show one of several things on the same route.
@@ -128,7 +132,6 @@ function App() {
               <h1>404</h1>
             </Route>
           </Switch>
-          <Footer />
         </ThemeProvider>
       </div>
     </Router>
