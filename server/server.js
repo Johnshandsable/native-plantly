@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const identifyRouter = require('./routes/identify.router');
 const plantRouter = require('./routes/plant.router');
 const plantv2Router = require('./routes/plant.v2.router');
 const searchRouter = require('./routes/search.router');

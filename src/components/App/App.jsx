@@ -10,7 +10,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 // Custom Components
 import AboutPage from '../AboutPage/AboutPage';
-import DetailView from '../DetailView/DetailView';
+// import DetailView from '../DetailView/DetailView'; build version does not like this component
 import Footer from '../Footer/Footer';
 import Garden from '../Garden/Garden';
 import LoginPage from '../LoginPage/LoginPage';
@@ -68,11 +68,11 @@ function App() {
             </Route>
 
             {/* Details View for Single Plants */}
-            <ProtectedRoute path="/details/">
+            {/* <ProtectedRoute path="/details/">
               <Nav />
               <DetailView />
               <Footer />
-            </ProtectedRoute>
+            </ProtectedRoute> */}
 
             {/* My Gardens Route */}
             <ProtectedRoute path="/my-gardens">
