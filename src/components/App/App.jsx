@@ -67,7 +67,7 @@ function App() {
               <Footer />
             </Route>
 
-            {/* Details View for Single Plants */}
+            {/* Details View for Single Plants does not work on Heroku atm*/}
             {/* <ProtectedRoute path="/details/">
               <Nav />
               <DetailView />
