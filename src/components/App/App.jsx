@@ -13,7 +13,6 @@ import AboutPage from '../AboutPage/AboutPage';
 import DetailView from '../DetailView/DetailView';
 import Footer from '../Footer/Footer';
 import Garden from '../Garden/Garden';
-import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import Nav from '../Nav/Nav';
 import PlantList from '../PlantList/PlantList';

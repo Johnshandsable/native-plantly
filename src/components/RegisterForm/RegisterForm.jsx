@@ -67,7 +67,7 @@ function RegisterForm() {
               required
             />{' '}
             <br />
-            <select
+            {/* <select
               value={location}
               onChange={(event) => setLocation(event.target.value)}
               required
@@ -123,8 +123,8 @@ function RegisterForm() {
               <option value="WV">West Virginia</option>
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
-            </select>
-            {/* <input
+            </select> */}
+            <input
               className="form-input"
               placeholder="state abbreviation"
               type="text"
@@ -132,7 +132,7 @@ function RegisterForm() {
               value={location}
               required
               onChange={(event) => setLocation(event.target.value)}
-            /> */}
+            />
             <br />
             <Button
               color="secondary"
