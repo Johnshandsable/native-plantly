@@ -1,28 +1,34 @@
 # Native Plantly
 
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+Native Plantly is a full-stack CRUD application where users can get native plants by their location, search for native plants, and add them to gardens. This application was created as a way to better track sections for a native wildlife garden. If you're planning on creating your own native wildlife garden, this application will be perfect for you. Unlike other applications which search for native plants based on your location, this application will allow you to create gardens and add plants to specific gardens. This application uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`). A full deployment of this application can be found at [Heroku](https://still-atoll-92787.herokuapp.com/home).
 
 ## Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
 
+- [Nodemon](https://nodemon.io/)
 - [Node.js](https://nodejs.org/en/)
 - [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+- [React](https://reactjs.org/)
 
 ## Create database and table
 
-To get this application up and running on your machine, make sure to use the database.sql file located in the root directory alongside the package.json file.
+If you want to run this app locally, make sure to copy and paste the database.sql file after creating a database named 'plantly'.
 
 ## Development Setup Instructions
 
 - Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
+
   ```
   TREFLE_API_KEY=your_token_here
   SERVER_SESSION_SECRET=your_secret_here
+  PLANT_ID_KEY=your_token_here
+
   ```
+
   While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
+
 - Start postgres if not running already by using `brew services start postgresql`
 - Run `npm run server`
 - Run `npm run client`
@@ -53,21 +59,7 @@ Keep in mind that once you using the login route, Postman will manage your sessi
 
 After running the login route above, you can try any other route you've created that requires a logged in user!
 
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
-
-## Lay of the Land
-
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
-
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
+## Application Structure
 
 Directory Structure:
 
@@ -76,30 +68,23 @@ Directory Structure:
 - `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
 - `server/` contains the Express App
 
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
 - src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
   - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
+  - App/App
+  - Buttons/Buttons
+  - DetailView/DetailView
+  - Dropdown/Dropdown
+  - Footer/Footer
+  - Garden/Garden
+  - LoginForm/LoginForm
   - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
   - LogOutButton/LogOutButton
+  - Nav/Nav
+  - PlantItem/PlantItem
+  - PlantList/PlantList
   - ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+  - RegisterForm/RegisterForm
+  - RegisterPage/RegisterPage
+  - SearchBar/SearchBar
+  - Tables/Tables
+  - UserPage/UserPage
